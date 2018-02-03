@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="game" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 1668 2224" preserveAspectRatio="none" style="enable-background:new 0 0 1668 2224;" xml:space="preserve">
+	 viewBox="0 0 1668 2224" style="enable-background:new 0 0 1668 2224;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:url(#gradient4_1_);}
 	.st1{fill:url(#gradient5_1_);}
@@ -26,23 +26,23 @@
 	.st20{fill:#C99465;}
 	.st21{fill:none;stroke:#634B2A;stroke-miterlimit:10;}
 	.st22{fill:#B28052;}
-	.st23{fill:#5C7552;}
-	.st24{fill:#E2CA96;}
-	.st25{fill:#EAD7A2;}
-	.st26{fill:#F9F2EF;}
-	.st27{fill:#382C26;}
-	.st28{fill:#936F5F;}
-	.st29{fill:#7C655C;}
-	.st30{fill:#F9A182;}
-	.st31{fill:#DBC697;}
-	.st32{fill:#8C7857;}
-	.st33{fill:#6F8763;}
-	.st34{fill:#635872;}
-	.st35{fill:#6B7F60;}
-	.st36{fill:#755D3F;}
-	.st37{fill:#C9B8A7;}
-	.st38{fill:#96674D;stroke:#A57758;stroke-width:3;stroke-miterlimit:10;}
-	.st39{fill:none;stroke:#A57758;stroke-width:3;stroke-miterlimit:10;}
+	.st23{fill:#96674D;stroke:#A57758;stroke-width:3;stroke-miterlimit:10;}
+	.st24{fill:none;stroke:#A57758;stroke-width:3;stroke-miterlimit:10;}
+	.st25{fill:#5C7552;}
+	.st26{fill:#E2CA96;}
+	.st27{fill:#EAD7A2;}
+	.st28{fill:#F9F2EF;}
+	.st29{fill:#382C26;}
+	.st30{fill:#936F5F;}
+	.st31{fill:#7C655C;}
+	.st32{fill:#F9A182;}
+	.st33{fill:#DBC697;}
+	.st34{fill:#8C7857;}
+	.st35{fill:#6F8763;}
+	.st36{fill:#635872;}
+	.st37{fill:#6B7F60;}
+	.st38{fill:#755D3F;}
+	.st39{fill:#C9B8A7;}
 	.st40{fill:#00CFFF;}
 	.st41{fill:#03CDE2;}
 	.st42{fill:#00DBFF;}
@@ -198,7 +198,6 @@
 	.st192{fill:#86D1B1;}
 	.st193{fill:#D98D31;}
 	.st194{fill:#B5B5B5;}
-	.st195{fill:#F76666;}
 </style>
 <g id="modalcliffs">
 	<linearGradient id="gradient2_1_" gradientUnits="userSpaceOnUse" x1="837.9923" y1="431.5338" x2="837.9923" y2="2236.6379">
