@@ -1,0 +1,270 @@
+html, body{
+	height: 100%;
+}
+
+body {
+	font-family: 'Fira Sans', sans-serif;
+	background-color: #ACACAC;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.display-block{
+	display: block!important;
+}
+.display-none{
+	display: none!important;
+}
+.inline-block{
+	display: inline-block!important;
+}
+
+.absolute{
+	position: absolute!important;
+}
+
+.relative{
+	position: relative!important;
+}
+
+.wt100{
+	width: 100%;
+}
+
+.ht100{
+	height: 100%;
+}
+/*
+* page enter game
+*/
+.modalwindow {
+	min-height: 100%;
+	text-align: center;
+	position: relative;
+	display: none;
+}
+
+.modalwindow > div{
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	margin-top: -100px;
+}
+
+.loadwindow__first {
+	text-transform: uppercase;
+	font-size: 54px;
+	color: #E7E7E7;
+}
+
+.loadwindow__start {
+	margin-top: 50px;
+	text-transform: uppercase;
+	font-size: 34px;
+	letter-spacing: 20px;
+	padding: 20px 20px 20px 30px;
+	color: #3B3B3B;
+}
+/*
+*	main page
+*/
+.counter-box{
+	width: 70%;
+	float: right;
+	margin-right: 10px;
+}
+
+.mainwindow {
+	height: 100%;
+	display: none;
+	padding: 0;
+	margin: 0;
+	background-color: #E2F3BF;
+}
+
+.mainwindow .counter-wrapper{
+	position: absolute;
+	z-index: 999;
+	width: 100%;
+}
+
+.counter-wrapper .btn-wrapper{
+	vertical-align: top;
+	margin: 10px;
+	display: none;
+}
+
+.button {
+	outline: none;
+	border: none;
+	width: 110px;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 20px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+	padding: 5px 0;
+	background-color: #F3EC85;
+	border-radius: 5px;
+	color: #F3894C;
+}
+
+.counter {
+	font-size: 32px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+	color: #F3894C;
+	text-align: right;
+	background: none;
+	border: none;
+}
+
+.game-island,
+.game-modalcliffs,
+.game-modalforest,
+.game-modalpier{
+	display: none;
+}
+
+.svg-container {
+	height: 100%;
+}
+
+.game-modalcliffs,
+.game-modalforest,
+.game-modalpier,
+.game-modalcliffs img,
+.game-modalforest img,
+.game-modalpier img{
+	height: 100%;
+	width: 100%;
+}
+
+/*
+* media query
+*/
+@media (min-width: 550px) {
+	.counter-box {
+		width: 73%;
+	}
+}
+
+@media (min-width: 750px) {
+	.counter-box {
+		width: 80%;
+	}
+}
+
+@media (min-width: 1000px) {
+	.counter-box {
+		width: 85%;
+	}
+}
+
+/*анимация руки торговца*/
+
+#second-arm-dealer {
+	animation-name: dealerarm_rotate;
+	animation-duration: 7s;
+	animation-iteration-count: infinite;
+}
+#second-arm-dealer img {
+	
+}
+#first-arm-dealer {
+	animation-name: dealerarm_rotate;
+	animation-duration: 7s;
+	animation-iteration-count: infinite;
+}
+#first-arm-dealer img {
+	
+}
+
+
+@keyframes dealerarm_rotate {
+	10%,50% {
+		transform: rotate(-70deg);
+	}
+	60% {
+		transform: rotate(0deg);
+	}
+}
+@keyframes dealer_firstarm_rotate {
+	10% {
+		transform: rotate(-90deg);
+	}
+	15% {
+		transform: rotate(-20deg);
+	}
+	20% {
+		transform: rotate(-90deg);
+	}
+	25% {
+		transform: rotate(-20deg);
+	}
+	30% {
+		transform: rotate(-90deg);
+	}
+	35% {
+		transform: rotate(-20deg);
+	}
+	40% {
+		transform: rotate(-90deg);
+	}
+	45% {
+		transform: rotate(-20deg);
+	}
+	50% {
+		transform: rotate(-90deg);
+	}
+	60% {
+		transform: rotate(0deg);
+	}
+}
+
+/*анимация человека в лесу*/
+.hba_up {
+	animation-name: hba_up;
+	animation-duration: 2s;
+}
+.pupils {
+	animation-name: pupils;
+	animation-duration: 2s;
+}
+.right_arm {
+	animation-name: right_arm;
+	animation-duration: 2s;
+	transform-origin: 1% 38%;
+}
+.first_right_arm {
+	animation-name: first_right_arm;
+	animation-duration: 2s;
+	transform-origin: 6% 20%;
+}
+
+@keyframes hba_up {
+	70% {
+		transform: translateY(-10%);
+	}
+}
+
+@keyframes pupils {
+	10%, 90% {
+		transform: translate(10%, 18%);
+	}
+	100% {
+		transform: translate(0%, 0%);
+	}
+}
+
+@keyframes right_arm {
+	70% {
+		transform: rotate(-70deg);
+	}
+}
+@keyframes first_right_arm {
+	70% {
+		transform: rotate(-50deg);
+	}
+}
