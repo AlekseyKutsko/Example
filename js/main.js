@@ -29,20 +29,10 @@
     var pier = document.getElementById('pier');
     var modalpier = document.getElementById('game-modalpier');
 
-    // var tree = document.getElementById('tree');
-    // var stone = document.getElementById('stone');
+    var wood_extraction = document.getElementById('modalforest');
+    var stone_extraction = document.getElementById('modalcliffs');
 
-//Чар в лесу
-    var rightarm = document.getElementById('right-arm');
-    var firstrightarm = document.getElementById('first-right-arm');
-    var leftarm = document.getElementById('left-arm');
-    var firstleftarm = document.getElementById('first-left-arm');
 
-//Чар на скалах
-    var rightarm1 = document.getElementById('right-arm_1_');
-    var firstrightarm1 = document.getElementById('first-right-arm_1_');
-    var leftarm1 = document.getElementById('left-arm_1_');
-    var firstleftarm1 = document.getElementById('first-left-arm_1_');
 
 
 
@@ -76,14 +66,18 @@
         setBtnsIslandVisibility();
         setLocationVisibility();
     };
-
-    // tree.onclick = function click() {
-    //     rightarm.classList.toggle('right-arm-rotate');
-    //     firstrightarm.classList.toggle('first-right-arm-rotate');
-    //     leftarm.classList.toggle('left-arm-rotate');
-    //     firstleftarm.classList.toggle('first-left-arm-rotate');
-    // };
-
+    var pupils = document.getElementById('pupils');
+    var right_arm = document.getElementById('right-armex');
+    var first_right_arm = document.getElementById('first-right-arm');
+    var left_arm = document.getElementById('left-arm');
+    var first_left_arm = document.getElementById('first-left-arm');
+    wood_extraction.onclick = function click() {
+        pupils.classList.toggle('pupils');
+        right_arm.classList.toggle('right_armex');
+        first_right_arm.classList.toggle('first_right_arm');
+        left_arm.classList.toggle('left_arm');
+        first_left_arm.classList.toggle('first_left_arm');
+};
 
 //скалы
     cliffs.onclick = function () {
@@ -91,12 +85,18 @@
         setBtnsIslandVisibility();
         setLocationVisibility();
     };
-    // stone.onclick = function click() {
-    //     rightarm1.classList.toggle('right-arm-rotate');
-    //     firstrightarm1.classList.toggle('first-right-arm-rotate');
-    //     leftarm1.classList.toggle('left-arm-rotate');
-    //     firstleftarm1.classList.toggle('first-left-arm-rotate');
-    // };
+    var pupils2 = document.getElementById('pupils2');
+    var right_arm2 = document.getElementById('right-armpick');
+    var first_right_arm2 = document.getElementById('first-right-arm2');
+    var left_arm2 = document.getElementById('left-arm2');
+    var first_left_arm2 = document.getElementById('first-left-arm2');
+    stone_extraction.onclick = function click() {
+        pupils2.classList.toggle('pupils');
+        right_arm2.classList.toggle('right_armex');
+        first_right_arm2.classList.toggle('first_right_arm');
+        left_arm2.classList.toggle('left_arm');
+        first_left_arm2.classList.toggle('first_left_arm');
+};
 
 
 //причал

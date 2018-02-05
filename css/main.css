@@ -164,22 +164,21 @@ body {
 
 /*анимация руки торговца*/
 
-#second-arm-dealer {
+#arm-dealer {
 	animation-name: dealerarm_rotate;
 	animation-duration: 7s;
 	animation-iteration-count: infinite;
+	transform-origin: 4% 10%;
 }
-#second-arm-dealer img {
 	
-}
+
 #first-arm-dealer {
-	animation-name: dealerarm_rotate;
+	animation-name: dealer_firstarm_rotate;
 	animation-duration: 7s;
 	animation-iteration-count: infinite;
+	transform-origin: 18% 9%;
 }
-#first-arm-dealer img {
-	
-}
+
 
 
 @keyframes dealerarm_rotate {
@@ -223,31 +222,35 @@ body {
 	}
 }
 
-/*анимация человека в лесу*/
-.hba_up {
-	animation-name: hba_up;
-	animation-duration: 2s;
-}
+/*анимация человека*/
 .pupils {
 	animation-name: pupils;
 	animation-duration: 2s;
 }
-.right_arm {
-	animation-name: right_arm;
+.right_armex {
+	animation-name: right_armex;
 	animation-duration: 2s;
-	transform-origin: 1% 38%;
+	animation-timing-function: ease-in;
+	
 }
 .first_right_arm {
 	animation-name: first_right_arm;
 	animation-duration: 2s;
-	transform-origin: 6% 20%;
+	animation-timing-function: ease-out;
+}
+.left_arm {
+	animation-name: left_arm;
+	animation-duration: 2s;
+	animation-timing-function: ease-in;
+}
+.first_left_arm {
+	animation-name: first_left_arm;
+	animation-duration: 2s;
+	animation-timing-function: ease-out;
 }
 
-@keyframes hba_up {
-	70% {
-		transform: translateY(-10%);
-	}
-}
+
+
 
 @keyframes pupils {
 	10%, 90% {
@@ -258,13 +261,30 @@ body {
 	}
 }
 
-@keyframes right_arm {
+@keyframes right_armex {
 	70% {
-		transform: rotate(-70deg);
+		transform: rotate(-50deg);
+		transform-origin: 10% 40%;
 	}
 }
 @keyframes first_right_arm {
 	70% {
-		transform: rotate(-50deg);
+		transform: rotate(-30deg);
+		transform-origin: 4% 17%;
 	}
 }
+@keyframes left_arm {
+	70% {
+		transform: rotate(-70deg);
+		transform-origin: 8% 20%;
+	}
+}
+@keyframes first_left_arm {
+	70% {
+		transform: rotate(-80deg);
+		transform-origin: 13% 8%;
+	}
+}
+
+/*Анимация человека в скалах*/
+
