@@ -131,14 +131,17 @@ body {
 	height: 100%;
 }
 
+.forest,
+.character,
 .game-modalcliffs,
 .game-modalforest,
-.game-modalpier,
-.game-modalcliffs img,
-.game-modalforest img,
-.game-modalpier img{
+.game-modalpier{
 	height: 100%;
 	width: 100%;
+}
+
+.charackter{
+	left: 35%;
 }
 
 /*
@@ -228,22 +231,26 @@ body {
 	animation-duration: 2s;
 }
 .right_armex {
+	transform: rotate(-45deg);
 	animation-name: right_armex;
 	animation-duration: 2s;
 	animation-timing-function: ease-in;
 	
 }
 .first_right_arm {
+	transform-origin: 0 0;
 	animation-name: first_right_arm;
 	animation-duration: 2s;
 	animation-timing-function: ease-out;
 }
 .left_arm {
+	transform-origin: 0 0;
 	animation-name: left_arm;
 	animation-duration: 2s;
 	animation-timing-function: ease-in;
 }
 .first_left_arm {
+	transform-origin: 0 0;
 	animation-name: first_left_arm;
 	animation-duration: 2s;
 	animation-timing-function: ease-out;
@@ -264,25 +271,25 @@ body {
 @keyframes right_armex {
 	70% {
 		transform: rotate(-50deg);
-		transform-origin: 10% 40%;
+		/*transform-origin: 10% 40%;*/
 	}
 }
 @keyframes first_right_arm {
 	70% {
 		transform: rotate(-30deg);
-		transform-origin: 4% 17%;
+		/*transform-origin: 4% 17%;*/
 	}
 }
 @keyframes left_arm {
 	70% {
 		transform: rotate(-70deg);
-		transform-origin: 8% 20%;
+		/*transform-origin: 8% 20%;*/
 	}
 }
 @keyframes first_left_arm {
 	70% {
 		transform: rotate(-80deg);
-		transform-origin: 13% 8%;
+		/*transform-origin: 13% 8%;*/
 	}
 }
 
