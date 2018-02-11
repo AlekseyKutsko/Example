@@ -123,7 +123,23 @@ body {
 .game-island,
 .game-modalcliffs,
 .game-modalforest,
-.game-modalpier{
+.game-modalpier,
+
+#mouthsmile_1_,
+#mouth_1_,
+#left-arm_x5F_saw2,
+#left-arm_x5F_saw,
+#right-arm_x5F_saw2,
+#right-arm_x5F_saw,
+#first-right-arm_x5F_ex3,
+#first-right-arm_x5F_ex2,
+
+#left-arm_x5F_perf2,
+#left-arm_x5F_perf,
+#right-arm_x5F_perf2,
+#right-arm_x5F_perf,
+#first-right-arm_x5F_pick3,
+#first-right-arm_x5F_pick2{
 	display: none;
 }
 
@@ -140,8 +156,9 @@ body {
 	width: 100%;
 }
 
-.charackter{
-	left: 35%;
+#game-char-forest,
+#game-char-cliffs{
+	left: 25%;
 }
 
 /*
@@ -225,73 +242,59 @@ body {
 	}
 }
 
-/*анимация человека*/
+/*анимация человека в лесу*/
+
 .pupils {
 	animation-name: pupils;
 	animation-duration: 2s;
 }
 .right_armex {
-	transform: rotate(-45deg);
-	animation-name: right_armex;
+	animation-name: right_arm;
 	animation-duration: 2s;
-	animation-timing-function: ease-in;
-	
+	transform-origin: 23% 50%;
 }
-.first_right_arm {
-	transform-origin: 0 0;
+.first_right_armex {
 	animation-name: first_right_arm;
 	animation-duration: 2s;
-	animation-timing-function: ease-out;
+	transform-origin: 35% 57%;
 }
-.left_arm {
-	transform-origin: 0 0;
+.left_armex {
 	animation-name: left_arm;
 	animation-duration: 2s;
-	animation-timing-function: ease-in;
+	transform-origin: 38% 49%;
 }
-.first_left_arm {
-	transform-origin: 0 0;
+.first_left_armex {
 	animation-name: first_left_arm;
 	animation-duration: 2s;
-	animation-timing-function: ease-out;
+	transform-origin: 47% 55%;
 }
-
-
-
 
 @keyframes pupils {
 	10%, 90% {
-		transform: translate(10%, 18%);
+		transform: translate(0.6%, 0.3%);
 	}
 	100% {
 		transform: translate(0%, 0%);
 	}
 }
 
-@keyframes right_armex {
+@keyframes right_arm {
 	70% {
-		transform: rotate(-50deg);
-		/*transform-origin: 10% 40%;*/
+		transform: rotate(-70deg);
 	}
 }
 @keyframes first_right_arm {
 	70% {
-		transform: rotate(-30deg);
-		/*transform-origin: 4% 17%;*/
+		transform: rotate(-50deg);
 	}
 }
 @keyframes left_arm {
 	70% {
 		transform: rotate(-70deg);
-		/*transform-origin: 8% 20%;*/
 	}
 }
 @keyframes first_left_arm {
 	70% {
-		transform: rotate(-80deg);
-		/*transform-origin: 13% 8%;*/
+		transform: rotate(-70deg);
 	}
 }
-
-/*Анимация человека в скалах*/
-
