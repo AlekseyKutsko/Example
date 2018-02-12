@@ -23,18 +23,16 @@
 
     var cliffs = document.getElementById('cliffs');
     var modalcliffs = document.querySelector('.game-modalcliffs');
+    var gameCharCliffs = document.querySelector('#game-char-cliffs');
+    var stone_extraction = document.getElementById('modalcliffs');
 
     var forest = document.getElementById('forest');
     var modalforest = document.querySelector('.game-modalforest');
     var gameCharForest = document.querySelector('#game-char-forest');
+    var wood_extraction = document.getElementById('modalforest');
 
     var pier = document.getElementById('pier');
     var modalpier = document.querySelector('.game-modalpier');
-
-    var wood_extraction = document.getElementById('modalforest');
-    var stone_extraction = document.getElementById('modalcliffs');
-
-
 
     var outstone = document.getElementById('outstone');
     var outwood = document.getElementById('outwood');
@@ -68,21 +66,18 @@
     };
     var pupils = document.getElementById('pupils_1_');
     var mouthsmile = document.getElementById('mouthsmile_1_');
-
-    // var mouth = document.getElementById('mouth_1_');
-
+    var mouth = document.getElementById('mouth');
     var right_arm = document.getElementById('right-arm_x5F_ex');
     var first_right_arm = document.getElementById('first-right-arm_3_');
     var left_arm = document.getElementById('left-arm_3_');
     var first_left_arm = document.getElementById('first-left-arm_3_');
+
     gameCharForest.onclick = function click() {
         gameAnimationChar();
     };
-
     wood_extraction.onclick = function click() {
         gameAnimationChar();
     };
-
     function gameAnimationChar() {
         if(!gameModel.activeAnimation){
             gameModel.activeAnimation = true;
@@ -92,8 +87,8 @@
             left_arm.classList.toggle('left_armex');
             first_left_arm.classList.toggle('first_left_armex');
             mouthsmile.classList.toggle('display-block');
+            mouth.classList.toggle('display-block');
 
-            // mouth.classList.toggle('display-block');
             setTimeout(function(){
                 gameModel.activeAnimation = false;
                 pupils.classList.toggle('pupils');
@@ -101,9 +96,9 @@
                 first_right_arm.classList.toggle('first_right_armex');
                 left_arm.classList.toggle('left_armex');
                 first_left_arm.classList.toggle('first_left_armex');
-
                 mouthsmile.classList.toggle('display-block');
-                // mouth.classList.toggle('display-block');
+                mouth.classList.toggle('display-block');
+                
             }, 2000);
         }
     }
@@ -115,17 +110,43 @@
         setLocationVisibility();
     };
     var pupils2 = document.getElementById('pupils_3_');
+    var mouthsmile2 = document.getElementById('mouthsmile_3_');
+    var mouth2 = document.getElementById('mouth_1_');
     var right_arm2 = document.getElementById('right-armpick_1_');
     var first_right_arm2 = document.getElementById('first-right-arm_x5F_pick3');
     var left_arm2 = document.getElementById('left-arm_2_');
     var first_left_arm2 = document.getElementById('first-left-arm_4_');
+
+     gameCharCliffs.onclick = function click() {
+        gameAnimationChar2();
+    };
     stone_extraction.onclick = function click() {
-        pupils2.classList.toggle('pupils');
-        right_arm2.classList.toggle('right_armex');
-        first_right_arm2.classList.toggle('first_right_arm');
-        left_arm2.classList.toggle('left_arm');
-        first_left_arm2.classList.toggle('first_left_arm');
-};
+        gameAnimationChar2();
+    };
+    function gameAnimationChar2() {
+        if(!gameModel.activeAnimation){
+            gameModel.activeAnimation = true;
+            pupils2.classList.toggle('pupils');
+            right_arm2.classList.toggle('right_armex');
+            first_right_arm2.classList.toggle('first_right_armex');
+            left_arm2.classList.toggle('left_armex');
+            first_left_arm2.classList.toggle('first_left_armex');
+            mouthsmile2.classList.toggle('display-block');
+            mouth2.classList.toggle('display-block');
+
+            setTimeout(function(){
+                gameModel.activeAnimation = false;
+                pupils2.classList.toggle('pupils');
+                right_arm2.classList.toggle('right_armex');
+                first_right_arm2.classList.toggle('first_right_armex');
+                left_arm2.classList.toggle('left_armex');
+                first_left_arm2.classList.toggle('first_left_armex');
+                mouthsmile2.classList.toggle('display-block');
+                mouth2.classList.toggle('display-block');
+                
+            }, 2000);
+        }
+    }
 
 
 //причал
