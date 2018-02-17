@@ -68,9 +68,13 @@ body {
 *	main page
 */
 .counter-box{
-	width: 70%;
+	position: absolute;
+	top: 0;
+	right: 10px;
+	width: 40%;
 	float: right;
 	margin-right: 10px;
+	margin-top: 1px;
 }
 
 .mainwindow {
@@ -124,9 +128,10 @@ body {
 .game-modalcliffs,
 .game-modalforest,
 .game-modalpier,
+#game-menu-dealer,
+#game-menu-char,
 
 #mouthsmile_1_,
-#mouth_1_,
 #left-arm_x5F_saw2,
 #left-arm_x5F_saw,
 #right-arm_x5F_saw2,
@@ -134,6 +139,7 @@ body {
 #first-right-arm_x5F_ex3,
 #first-right-arm_x5F_ex2,
 
+#mouthsmile_3_,
 #left-arm_x5F_perf2,
 #left-arm_x5F_perf,
 #right-arm_x5F_perf2,
@@ -142,7 +148,10 @@ body {
 #first-right-arm_x5F_pick2{
 	display: none;
 }
-
+#game-menu-char {
+	top: 0;
+	left: 0;
+}
 .svg-container {
 	height: 100%;
 }
@@ -155,10 +164,12 @@ body {
 	height: 100%;
 	width: 100%;
 }
-
 #game-char-forest,
 #game-char-cliffs{
 	left: 25%;
+}
+#game-dealer {
+	left: 12%;
 }
 
 /*
@@ -184,19 +195,19 @@ body {
 
 /*анимация руки торговца*/
 
-#arm-dealer {
+#arm_x5F_dealer_2_ {
 	animation-name: dealerarm_rotate;
 	animation-duration: 7s;
 	animation-iteration-count: infinite;
-	transform-origin: 4% 10%;
+	transform-origin: 38% 53.3%;
 }
 	
 
-#first-arm-dealer {
+#first-arm-dealer_2_ {
 	animation-name: dealer_firstarm_rotate;
 	animation-duration: 7s;
 	animation-iteration-count: infinite;
-	transform-origin: 18% 9%;
+	transform-origin: 45% 59%;
 }
 
 
@@ -242,7 +253,7 @@ body {
 	}
 }
 
-/*анимация человека в лесу*/
+/*анимация с топорами и кирками*/
 
 .pupils {
 	animation-name: pupils;
@@ -296,5 +307,110 @@ body {
 @keyframes first_left_arm {
 	70% {
 		transform: rotate(-70deg);
+	}
+}
+
+/*Анимация с бензопилами*/
+.pupils_saw {
+	animation-name: pupils_saw;
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+}
+.right_arm_saw {
+	animation-name: right_arm_saw;
+	animation-duration: 2s;
+	transform-origin: 23% 50%;
+	animation-fill-mode: forwards;
+}
+.first_right_arm_saw {
+	animation-name: first_right_arm_saw;
+	animation-duration: 2s;
+	transform-origin: 35% 56%;
+	animation-fill-mode: forwards;
+}
+.left_arm_saw {
+	animation-name: left_arm_saw;
+	animation-duration: 2s;
+	transform-origin: 38% 50%;
+	animation-fill-mode: forwards;
+}
+.first_left_arm_saw {
+	animation-name: first_left_arm_saw;
+	animation-duration: 2s;
+	transform-origin: 48% 55%;
+	animation-fill-mode: forwards;
+}
+
+
+@keyframes pupils_saw {
+	10%, 100% {
+		transform: translate(0.6%, 0.3%);
+	}
+}
+@keyframes right_arm_saw {
+	70%, 100% {
+		transform: rotate(15deg);
+	}
+}
+@keyframes first_right_arm_saw {
+	70%, 100% {
+		transform: rotate(50deg);
+	}
+}
+@keyframes left_arm_saw {
+	70%, 100% {
+		transform: rotate(50deg);
+	}
+}
+@keyframes first_left_arm_saw {
+	70%, 100% {
+		transform: rotate(7deg);
+	}
+}
+
+/* Анимация с перфами */
+.right_arm_perf {
+	animation-name: right_arm_perf;
+	animation-duration: 2s;
+	transform-origin: 24% 51%;
+	animation-fill-mode: forwards;
+}
+.first_right_arm_perf {
+	animation-name: first_right_arm_perf;
+	animation-duration: 2s;
+	transform-origin: 15% 58%;
+	animation-fill-mode: forwards;
+}
+.left_arm_perf {
+	animation-name: left_arm_perf;
+	animation-duration: 2s;
+	transform-origin: 38% 49%;
+	animation-fill-mode: forwards;
+}
+.first_left_arm_perf {
+	animation-name: first_left_arm_perf;
+	animation-duration: 2s;
+	transform-origin: 45% 56.5%;
+	animation-fill-mode: forwards;
+}
+
+@keyframes right_arm_perf {
+	70%, 100% {
+		transform: rotate(-80deg);
+	}
+}
+@keyframes first_right_arm_perf {
+	70%, 100% {
+		transform: rotate(65deg);
+	}
+}
+@keyframes left_arm_perf {
+	70%, 100% {
+		transform: rotate(-16deg);
+	}
+}
+@keyframes first_left_arm_perf {
+	70%, 100% {
+		transform: rotate(-28deg);
 	}
 }
