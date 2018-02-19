@@ -1,4 +1,4 @@
-(function(){
+(function(appMethods){
     var LOCATION = {
         enterPage: 'enterPage',
         island: 'island',
@@ -9,7 +9,21 @@
 
     var gameModel = {
         activeLocation: 'enterPage',
-        activeAnimation: false
+        activeAnimation: false,
+        char: {
+            armForest: 'axe_1',
+            armCliffs: 'pick_1',
+            strength: 0,
+            intelligence: 0,
+            agi: 0,
+            woods: 0,
+            allWoods: 0,
+            rocks: 0,
+            allRocks: 0,
+            money: 0
+        },
+        eventStartHandler: null,
+        eventEndHandler: null
     };
 
     var startGameBtn = document.getElementById('loadwindow__start');
@@ -37,11 +51,6 @@
 
     var outstone = document.getElementById('outstone');
     var outwood = document.getElementById('outwood');
-    var counterWood = 0;
-    var counterWood2 = 0;
-    var counterStone = 0;
-    var counterStone2 = 0;
-
 
     startGameBtn.onclick = function() {
         startExitGame('enter');
@@ -62,103 +71,24 @@
         island.classList.toggle('display-block');
 
         gameModel.activeLocation = (action === 'enter') ? LOCATION.island : LOCATION.enterPage;
-    };
+    }
 
     backBtn.onclick = function () {
+        removeListenersHelper();
         setBtnsIslandVisibility();
         setLocationVisibility();
         gameModel.activeLocation = LOCATION.island;
     };
-    function setBtnsIslandVisibility(){
-        island.classList.toggle('display-block');
-        backBtn.parentElement.classList.toggle('inline-block');
-        exitBtn.parentElement.classList.toggle('inline-block');
-    };
-
-    function setLocationVisibility(){
-        switch (gameModel.activeLocation){
-            case 'forest' : {
-                modalforest.classList.toggle('display-block');
-                break;
-            }
-            case 'cliffs' : {
-                modalcliffs.classList.toggle('display-block');
-                break;
-            }
-            case 'pier' : {
-                modalpier.classList.toggle('display-block');
-                break;
-            }
-        }
-    };
-
-// лес
+    // лес
     forest.onclick = function () {
         gameModel.activeLocation = LOCATION.forest;
         setBtnsIslandVisibility();
         setLocationVisibility();
-    };
-    // Топоры
-    var pupils = document.getElementById('pupils_1_');
-    var mouthsmile = document.getElementById('mouthsmile_1_');
-    var mouth = document.getElementById('mouth');
 
-    var right_arm = document.getElementById('right-arm_x5F_ex');
-    var first_right_arm = document.getElementById('first-right-arm_3_');
-    var first_right_arm_ex2 = document.getElementById('first-right-arm_x5F_ex2');
-    var first_right_arm_ex3 = document.getElementById('first-right-arm_x5F_ex3');
-    var first_right_arm_ex4 = document.getElementById('first-right-arm_x5F_ex4');
-    var first_right_arm_ex5 = document.getElementById('first-right-arm_x5F_ex5');
-    var left_arm = document.getElementById('left-arm_3_');
-    var first_left_arm = document.getElementById('first-left-arm_3_');
-    var timer;
-
-    gameCharForest.onclick = function click() {
-        gameAnimationChar();
-    };
-    wood_extraction.onclick = function click() {
-        gameAnimationChar();
+        var options = getOptionsAnimation(gameModel.char.armForest);
+        setListeners(gameCharForest, options);
     };
     
-    function gameAnimationChar() {
-        if(!gameModel.activeAnimation){
-            gameModel.activeAnimation = true;
-
-            pupils.classList.toggle('pupils');
-            mouthsmile.classList.toggle('display-block');
-            mouth.classList.toggle('display-block');
-
-            right_arm.classList.toggle('right_armex');
-            first_right_arm.classList.toggle('first_right_armex');
-            first_right_arm_ex2.classList.toggle('first_right_armex');
-            first_right_arm_ex3.classList.toggle('first_right_armex');
-            first_right_arm_ex4.classList.toggle('first_right_armex');
-            first_right_arm_ex5.classList.toggle('first_right_armex');
-            left_arm.classList.toggle('left_armex');
-            first_left_arm.classList.toggle('first_left_armex');
-
-            setTimeout(function(){
-                gameModel.activeAnimation = false;
-
-                pupils.classList.toggle('pupils');
-                mouthsmile.classList.toggle('display-block');
-                mouth.classList.toggle('display-block');
-
-                right_arm.classList.toggle('right_armex');
-                first_right_arm.classList.toggle('first_right_armex');
-                first_right_arm_ex2.classList.toggle('first_right_armex');
-                first_right_arm_ex3.classList.toggle('first_right_armex');
-                first_right_arm_ex4.classList.toggle('first_right_armex');
-                first_right_arm_ex5.classList.toggle('first_right_armex');
-                left_arm.classList.toggle('left_armex');
-                first_left_arm.classList.toggle('first_left_armex');
-
-                counterWood++;
-                counterWood2++;
-                outwood.innerHTML = counterWood;
-            }, 2000);
-        }
-    };
     // Пилы
     var right_arm_saw = document.getElementById('right-arm_x5F_saw');
     var first_right_arm_saw = document.getElementById('first-right-arm_x5F_saw');
@@ -169,14 +99,14 @@
     var first_right_arm_saw2 = document.getElementById('first-right-arm_x5F_saw2');
     var left_arm_saw2 = document.getElementById('left-arm_x5F_saw2');
     var first_left_arm_saw2 = document.getElementById('first-left-arm_7_');
-    gameCharForest.onmousedown = function() {
-        gameAnimationCharSaw();
-    };
-    wood_extraction.onmousedown = function() {
-        gameAnimationCharSaw();
-    };
+    // gameCharForest.onmousedown = function() {
+    //     gameAnimationCharSaw();
+    // };
+    // wood_extraction.onmousedown = function() {
+    //     gameAnimationCharSaw();
+    // };
     function gameAnimationCharSaw() {
-        pupils.classList.add('pupils_saw',);
+        pupils.classList.add('pupils_saw');
         mouthsmile.classList.add('display-block');
         mouth.classList.add('display-block');
 
@@ -190,12 +120,12 @@
         left_arm_saw2.classList.add('left_arm_saw');
         first_left_arm_saw2.classList.add('first_left_arm_saw');
     };
-    gameCharForest.onmouseup = function() {
-        gameAnimationCharSawUp();
-    };
-    wood_extraction.onmouseup = function() {
-        gameAnimationCharSawUp();
-    };
+    // gameCharForest.onmouseup = function() {
+    //     gameAnimationCharSawUp();
+    // };
+    // wood_extraction.onmouseup = function() {
+    //     gameAnimationCharSawUp();
+    // };
     function gameAnimationCharSawUp() {
         pupils.classList.remove('pupils_saw');
         mouthsmile.classList.remove('display-block');
@@ -217,65 +147,10 @@
         gameModel.activeLocation = LOCATION.cliffs;
         setBtnsIslandVisibility();
         setLocationVisibility();
+
+        var options = getOptionsAnimation(gameModel.char.armCliffs);
+        setListeners(gameCharCliffs, options);
     };
-    // кирки
-    var pupils2 = document.getElementById('pupils_3_');
-    var mouthsmile2 = document.getElementById('mouthsmile_3_');
-    var mouth2 = document.getElementById('mouth_1_');
-
-    var right_arm2 = document.getElementById('right-armpick_1_');
-    var first_right_arm2 = document.getElementById('first-right-arm_4_');
-    var first_right_arm2_pick2 = document.getElementById('first-right-arm_x5F_pick2');
-    var first_right_arm2_pick3 = document.getElementById('first-right-arm_x5F_pick3');
-    var first_right_arm2_pick4 = document.getElementById('first-right-arm_x5F_pick4_1_');
-    var first_right_arm2_pick5 = document.getElementById('first-right-arm_x5F_pick5');
-    var left_arm2 = document.getElementById('left-arm_2_');
-    var first_left_arm2 = document.getElementById('first-left-arm_4_');
-
-     gameCharCliffs.onclick = function click() {
-        gameAnimationChar2();
-    };
-    stone_extraction.onclick = function click() {
-        gameAnimationChar2();
-    };
-    function gameAnimationChar2() {
-        if(!gameModel.activeAnimation){
-            gameModel.activeAnimation = true;
-
-            pupils2.classList.toggle('pupils');
-            mouthsmile2.classList.toggle('display-block');
-
-            right_arm2.classList.toggle('right_armex');
-            first_right_arm2.classList.toggle('first_right_armex');
-            first_right_arm2_pick2.classList.toggle('first_right_armex');
-            first_right_arm2_pick3.classList.toggle('first_right_armex');
-            first_right_arm2_pick4.classList.toggle('first_right_armex');
-            first_right_arm2_pick5.classList.toggle('first_right_armex');
-            left_arm2.classList.toggle('left_armex');
-            first_left_arm2.classList.toggle('first_left_armex');
-            
-            setTimeout(function(){
-                gameModel.activeAnimation = false;
-
-                pupils2.classList.toggle('pupils');
-                mouthsmile2.classList.toggle('display-block');
-                mouth2.classList.toggle('display-block');
-
-                right_arm2.classList.toggle('right_armex');
-                first_right_arm2.classList.toggle('first_right_armex');
-                first_right_arm2_pick2.classList.toggle('first_right_armex');
-                first_right_arm2_pick3.classList.toggle('first_right_armex');
-                first_right_arm2_pick4.classList.toggle('first_right_armex');
-                first_right_arm2_pick5.classList.toggle('first_right_armex');
-                left_arm2.classList.toggle('left_armex');
-                first_left_arm2.classList.toggle('first_left_armex');
-
-                counterStone++;
-                counterStone2++;
-                outstone.innerHTML = counterStone;        
-            }, 2000);
-        }
-    }
      // перфы
     var right_arm_perf = document.getElementById('right-arm_x5F_perf');
     var first_right_arm_perf = document.getElementById('first-right-arm_x5F_perf');
@@ -287,14 +162,14 @@
     var left_arm_perf2 = document.getElementById('left-arm_x5F_perf2');
     var first_left_arm_perf2 = document.getElementById('first-left-arm_6_');
 
-    gameCharCliffs.onmousedown = function() {
-        gameAnimationCharPerf();
-    };
-    stone_extraction.onmousedown = function() {
-        gameAnimationCharPerf();
-    };
+    // gameCharCliffs.onmousedown = function() {
+    //     gameAnimationCharPerf();
+    // };
+    // stone_extraction.onmousedown = function() {
+    //     gameAnimationCharPerf();
+    // };
     function gameAnimationCharPerf() {
-        pupils2.classList.add('pupils_saw',);
+        pupils2.classList.add('pupils_saw');
         mouthsmile2.classList.add('display-block');
 
         right_arm_perf.classList.add('right_arm_perf');
@@ -306,14 +181,14 @@
         first_right_arm_perf2.classList.add('first_right_arm_perf');
         left_arm_perf2.classList.add('left_arm_perf');
         first_left_arm_perf2.classList.add('first_left_arm_perf');
-    };
+    }
 
-    gameCharCliffs.onmouseup = function() {
-        gameAnimationCharPerfUp();
-    };
-    stone_extraction.onmouseup = function() {
-        gameAnimationCharPerfUp();
-    };
+    // gameCharCliffs.onmouseup = function() {
+    //     gameAnimationCharPerfUp();
+    // };
+    // stone_extraction.onmouseup = function() {
+    //     gameAnimationCharPerfUp();
+    // };
     function gameAnimationCharPerfUp() {
         pupils2.classList.remove('pupils_saw');
         mouthsmile2.classList.remove('display-block');
@@ -328,6 +203,8 @@
         left_arm_perf2.classList.remove('left_arm_perf');
         first_left_arm_perf2.classList.remove('first_left_arm_perf');
     };
+
+
 
 //причал
     var dealer = document.getElementById('game-dealer');
@@ -390,5 +267,237 @@
     charBtn.onclick = function () {
         menuChar.classList.toggle('display-block');
     };
+
+    // methods
+    function actionStartHelper(options){
+        switch (gameModel.activeLocation){
+            case 'forest' : {
+                if(gameModel.char.armForest.indexOf('axe') !== -1){
+                    gameAnimationCharLevel1(options);
+                } else if(gameModel.char.armForest.indexOf('saw') !== -1){
+
+                }
+                break;
+            }
+            case 'cliffs' : {
+                if(gameModel.char.armCliffs.indexOf('pick') !== -1){
+                    gameAnimationCharLevel1(options);
+                } else if(gameModel.char.armCliffs.indexOf('perf') !== -1){
+
+                }
+                break;
+            }
+        }
+    }
+
+    function actionEndHelper(options) {
+        switch (gameModel.activeLocation){
+            case 'forest' : {
+                if(gameModel.char.armForest.indexOf('axe') !== -1){
+
+                } else if(gameModel.char.armForest.indexOf('saw') !== -1){
+
+                }
+                break;
+            }
+            case 'cliffs' : {
+                if(gameModel.char.armCliffs.indexOf('pick') !== -1){
+
+                } else if(gameModel.char.armCliffs.indexOf('perf') !== -1){
+
+                }
+                break;
+            }
+            case 'pier' : {
+
+                break;
+            }
+        }
+    }
+
+    function setListeners(char, options){
+        gameModel.eventStartHandler = function () {
+            actionStartHelper(options);
+        };
+
+        gameModel.eventEndHandler = function () {
+            actionEndHelper(options);
+        };
+
+        char.addEventListener('touchstart', gameModel.eventStartHandler);
+        char.addEventListener('touchend', gameModel.eventEndHandler);
+    }
+
+    function removeListeners(char){
+        char.removeEventListener('touchstart', gameModel.eventStartHandler);
+        char.removeEventListener('touchend', gameModel.eventEndHandler);
+
+        gameModel.eventStartHandler = null;
+        gameModel.eventEndHandler = null;
+    }
+
+    function getOptionsAnimation(arm) {
+        var _result, _rightArm;
+        switch (gameModel.activeLocation){
+            case 'forest' : {
+                if(arm.indexOf('axe') !== -1){
+                    switch (arm){
+                        case 'axe_1': {
+                            _rightArm = document.getElementById('first-right-arm_3_');
+                            break;
+                        }
+
+                        case 'axe_2': {
+                            _rightArm = document.getElementById('first-right-arm_x5F_ex2');
+                            break;
+                        }
+
+                        case 'axe_3': {
+                            _rightArm = document.getElementById('first-right-arm_x5F_ex3');
+                            break;
+                        }
+
+                        case 'axe_4': {
+                            _rightArm = document.getElementById('first-right-arm_x5F_ex4');
+                            break;
+                        }
+
+                        case 'axe_5': {
+                            _rightArm = document.getElementById('first-right-arm_x5F_ex5');
+                            break;
+                        }
+                    }
+
+                    _result = {
+                        pupils: document.getElementById('pupils_1_'),
+                        mouthsmile: document.getElementById('mouthsmile_1_'),
+                        mouth: document.getElementById('mouth'),
+                        right_arm: document.getElementById('right-arm_x5F_ex'),
+                        first_right_arm: _rightArm,
+                        left_arm: document.getElementById('left-arm_3_'),
+                        first_left_arm: document.getElementById('first-left-arm_3_'),
+                        delay: 2000
+                    };
+
+                } else if(arm.indexOf('saw') !== -1){
+                    //todo saw
+                }
+
+                break;
+            }
+            case 'cliffs' : {
+                if(gameModel.char.armCliffs.indexOf('pick') !== -1){
+                    switch (arm){
+                        case 'pick_1': {
+                            _rightArm = document.getElementById('first-right-arm_4_');
+                            break;
+                        }
+
+                        case 'pick_2': {
+                            _rightArm = document.getElementById('first-right-arm_x5F_pick2');
+                            break;
+                        }
+
+                        case 'pick_3': {
+                            _rightArm = document.getElementById('first-right-arm_x5F_pick3');
+                            break;
+                        }
+
+                        case 'pick_4': {
+                            _rightArm = document.getElementById('first-right-arm_x5F_pick4_1_');
+                            break;
+                        }
+
+                        case 'pick_5': {
+                            _rightArm = document.getElementById('first-right-arm_x5F_pick5');
+                            break;
+                        }
+                    }
+
+                    _result = {
+                        pupils: document.getElementById('pupils_3_'),
+                        mouthsmile: document.getElementById('mouthsmile_3_'),
+                        mouth: document.getElementById('mouth_1_'),
+                        right_arm: document.getElementById('right-armpick_1_'),
+                        first_right_arm: _rightArm,
+                        left_arm: document.getElementById('left-arm_2_'),
+                        first_left_arm: document.getElementById('first-left-arm_4_'),
+                        delay: 2000
+                    };
+                } else if(gameModel.char.armCliffs.indexOf('perf') !== -1){
+                    //todo perf
+                }
+                break;
+            }
+        }
+
+        return _result;
+    }
+
+    function gameAnimationCharLevel1(options) {
+        if(!gameModel.activeAnimation){
+            gameModel.activeAnimation = true;
+
+            options.pupils.classList.toggle('pupils');
+            options.mouthsmile.classList.toggle('display-block');
+            options.mouth.classList.toggle('display-block');
+            options.right_arm.classList.toggle('right_armex');
+            options.first_right_arm.classList.toggle('first_right_armex');
+            options.left_arm.classList.toggle('left_armex');
+            options.first_left_arm.classList.toggle('first_left_armex');
+
+            setTimeout(function(){
+                gameModel.activeAnimation = false;
+
+                options.pupils.classList.toggle('pupils');
+                options.mouthsmile.classList.toggle('display-block');
+                options.mouth.classList.toggle('display-block');
+                options.right_arm.classList.toggle('right_armex');
+                options.first_right_arm.classList.toggle('first_right_armex');
+                options.left_arm.classList.toggle('left_armex');
+                options.first_left_arm.classList.toggle('first_left_armex');
+            }, options.delay);
+        }
+    }
+
+    function setBtnsIslandVisibility(){
+        island.classList.toggle('display-block');
+        backBtn.parentElement.classList.toggle('inline-block');
+        exitBtn.parentElement.classList.toggle('inline-block');
+    }
+
+    function setLocationVisibility(){
+        switch (gameModel.activeLocation){
+            case 'forest' : {
+                modalforest.classList.toggle('display-block');
+                break;
+            }
+            case 'cliffs' : {
+                modalcliffs.classList.toggle('display-block');
+                break;
+            }
+            case 'pier' : {
+                modalpier.classList.toggle('display-block');
+                break;
+            }
+        }
+    }
+
+    function removeListenersHelper(){
+        switch (gameModel.activeLocation){
+            case 'forest' : {
+                removeListeners(gameCharForest);
+                break;
+            }
+            case 'cliffs' : {
+                removeListeners(gameCharCliffs);
+                break;
+            }
+            case 'pier' : {
+
+                break;
+            }
+        }
+    }
     
-})();
+})(appMethods);
