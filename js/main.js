@@ -39,7 +39,8 @@
     var outwood = document.getElementById('outwood');
     var counterWood = 0;
     var counterWood2 = 0;
-
+    var counterStone = 0;
+    var counterStone2 = 0;
 
 
     startGameBtn.onclick = function() {
@@ -106,24 +107,19 @@
     var first_right_arm = document.getElementById('first-right-arm_3_');
     var first_right_arm_ex2 = document.getElementById('first-right-arm_x5F_ex2');
     var first_right_arm_ex3 = document.getElementById('first-right-arm_x5F_ex3');
+    var first_right_arm_ex4 = document.getElementById('first-right-arm_x5F_ex4');
+    var first_right_arm_ex5 = document.getElementById('first-right-arm_x5F_ex5');
     var left_arm = document.getElementById('left-arm_3_');
     var first_left_arm = document.getElementById('first-left-arm_3_');
     var timer;
 
     gameCharForest.onclick = function click() {
         gameAnimationChar();
-        count();
     };
     wood_extraction.onclick = function click() {
         gameAnimationChar();
-        count();
     };
-    function count() {
-         timer = setTimeout(function tick() {
-            outwood.innerHTML = counterWood;
-            counterWood++;
-        }, 2000);
-    };
+    
     function gameAnimationChar() {
         if(!gameModel.activeAnimation){
             gameModel.activeAnimation = true;
@@ -136,6 +132,8 @@
             first_right_arm.classList.toggle('first_right_armex');
             first_right_arm_ex2.classList.toggle('first_right_armex');
             first_right_arm_ex3.classList.toggle('first_right_armex');
+            first_right_arm_ex4.classList.toggle('first_right_armex');
+            first_right_arm_ex5.classList.toggle('first_right_armex');
             left_arm.classList.toggle('left_armex');
             first_left_arm.classList.toggle('first_left_armex');
 
@@ -150,8 +148,14 @@
                 first_right_arm.classList.toggle('first_right_armex');
                 first_right_arm_ex2.classList.toggle('first_right_armex');
                 first_right_arm_ex3.classList.toggle('first_right_armex');
+                first_right_arm_ex4.classList.toggle('first_right_armex');
+                first_right_arm_ex5.classList.toggle('first_right_armex');
                 left_arm.classList.toggle('left_armex');
                 first_left_arm.classList.toggle('first_left_armex');
+
+                counterWood++;
+                counterWood2++;
+                outwood.innerHTML = counterWood;
             }, 2000);
         }
     };
@@ -223,6 +227,8 @@
     var first_right_arm2 = document.getElementById('first-right-arm_4_');
     var first_right_arm2_pick2 = document.getElementById('first-right-arm_x5F_pick2');
     var first_right_arm2_pick3 = document.getElementById('first-right-arm_x5F_pick3');
+    var first_right_arm2_pick4 = document.getElementById('first-right-arm_x5F_pick4_1_');
+    var first_right_arm2_pick5 = document.getElementById('first-right-arm_x5F_pick5');
     var left_arm2 = document.getElementById('left-arm_2_');
     var first_left_arm2 = document.getElementById('first-left-arm_4_');
 
@@ -243,6 +249,8 @@
             first_right_arm2.classList.toggle('first_right_armex');
             first_right_arm2_pick2.classList.toggle('first_right_armex');
             first_right_arm2_pick3.classList.toggle('first_right_armex');
+            first_right_arm2_pick4.classList.toggle('first_right_armex');
+            first_right_arm2_pick5.classList.toggle('first_right_armex');
             left_arm2.classList.toggle('left_armex');
             first_left_arm2.classList.toggle('first_left_armex');
             
@@ -257,8 +265,14 @@
                 first_right_arm2.classList.toggle('first_right_armex');
                 first_right_arm2_pick2.classList.toggle('first_right_armex');
                 first_right_arm2_pick3.classList.toggle('first_right_armex');
+                first_right_arm2_pick4.classList.toggle('first_right_armex');
+                first_right_arm2_pick5.classList.toggle('first_right_armex');
                 left_arm2.classList.toggle('left_armex');
-                first_left_arm2.classList.toggle('first_left_armex');        
+                first_left_arm2.classList.toggle('first_left_armex');
+
+                counterStone++;
+                counterStone2++;
+                outstone.innerHTML = counterStone;        
             }, 2000);
         }
     }
@@ -326,6 +340,44 @@
         setLocationVisibility();
     };
     // меню торговца
+        // продажа
+    var quantityWoodSell = document.getElementById('quantity-wood_x5F_sell');
+    var moneyWoodSell = document.getElementById('money-wood_x5F_sell');
+    var btnMinusWoodSell = document.getElementById('minus-wood_x5F_sell');
+    var btnPlusWoodSell = document.getElementById('plus-wood_x5F_sell');
+    var btnSellWood = document.getElementById('btn-sell_x5F_wood');
+
+    var quantityStoneSell = document.getElementById('quantity-stone_x5F_sell');
+    var moneyStoneSell = document.getElementById('money-stone_x5F_sell');
+    var btnMinusStoneSell = document.getElementById('minus-stone_x5F_sell');
+    var btnPlusStoneSell = document.getElementById('plus-stone_x5F_sell');
+    var btnSellStone = document.getElementById('btn-sell_x5F_stone');
+        // покупка
+    var quantityWoodBuy = document.getElementById('quantity-wood_x5F_buy');
+    var moneyWoodBuy = document.getElementById('money-wood_x5F_buy');
+    var btnMinusWoodBuy = document.getElementById('minus-wood_x5F_buy');
+    var btnPlusWoodBuy = document.getElementById('plus-wood_x5F_buy');
+    var btnBuyWood = document.getElementById('btn-buy_x5F_wood');
+
+    var quantityStoneSell = document.getElementById('quantity-stone_x5F_buy');
+    var moneyStoneSell = document.getElementById('money-stone_x5F_buy');
+    var btnMinusStoneBuy = document.getElementById('minus-stone_x5F_buy');
+    var btnPlusStoneBuy = document.getElementById('plus-stone_x5F_buy');
+    var btnBuyStone = document.getElementById('btn-buy_x5F_stone');
+
+    var btnBuyEx2 = document.getElementById('btn-buy_x5F_ex2');
+    var btnBuyEx3 = document.getElementById('btn-buy_x5F_ex3');
+    var btnBuySaw = document.getElementById('btn-buy_x5F_saw');
+    var btnBuyEx4 = document.getElementById('btn-buy_x5F_ex4');
+    var btnBuyEx5 = document.getElementById('btn-buy_x5F_ex5');
+    var btnBuySaw2 = document.getElementById('btn-buy_x5F_saw2');
+    var btnBuyPick2 = document.getElementById('btn-buy_x5F_pick2');
+    var btnBuyPick3 = document.getElementById('btn-buy_x5F_pick3');
+    var btnBuyPerf = document.getElementById('btn-buy_x5F_perf');
+    var btnBuyPick4 = document.getElementById('btn-buy_x5F_pick4');
+    var btnBuyPick5 = document.getElementById('btn-buy_x5F_pick5');
+    var btnBuyPerf2 = document.getElementById('btn-buy_x5F_perf2');
+
     dealer.onclick = function () {
         menuDealer.style.display = 'block';
     };

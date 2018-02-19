@@ -1,5 +1,8 @@
 html, body{
 	height: 100%;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	user-select: none; 
 }
 
 body {
@@ -130,20 +133,24 @@ body {
 .game-modalpier,
 #game-menu-dealer,
 #game-menu-char,
-
+/*чар в лесу*/
 #mouthsmile_1_,
 #left-arm_x5F_saw2,
 #left-arm_x5F_saw,
 #right-arm_x5F_saw2,
 #right-arm_x5F_saw,
+#first-right-arm_x5F_ex5,
+#first-right-arm_x5F_ex4,
 #first-right-arm_x5F_ex3,
 #first-right-arm_x5F_ex2,
-
+/*чар в скалах*/
 #mouthsmile_3_,
 #left-arm_x5F_perf2,
 #left-arm_x5F_perf,
 #right-arm_x5F_perf2,
 #right-arm_x5F_perf,
+#first-right-arm_x5F_pick5,
+#first-right-arm_x5F_pick4_1_,
 #first-right-arm_x5F_pick3,
 #first-right-arm_x5F_pick2{
 	display: none;
@@ -273,11 +280,13 @@ body {
 	animation-name: left_arm;
 	animation-duration: 2s;
 	transform-origin: 38% 49%;
+	animation-timing-function: ease-out;
 }
 .first_left_armex {
 	animation-name: first_left_arm;
 	animation-duration: 2s;
 	transform-origin: 47% 55%;
+	
 }
 
 @keyframes pupils {
@@ -301,12 +310,12 @@ body {
 }
 @keyframes left_arm {
 	70% {
-		transform: rotate(-70deg);
+		transform: rotate(-80deg);
 	}
 }
 @keyframes first_left_arm {
 	70% {
-		transform: rotate(-70deg);
+		transform: rotate(-77deg);
 	}
 }
 
