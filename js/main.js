@@ -88,61 +88,7 @@
         var options = getOptionsAnimation(gameModel.char.armForest);
         setListeners(gameCharForest, options);
     };
-    
-    // Пилы
-    var right_arm_saw = document.getElementById('right-arm_x5F_saw');
-    var first_right_arm_saw = document.getElementById('first-right-arm_x5F_saw');
-    var left_arm_saw = document.getElementById('left-arm_x5F_saw');
-    var first_left_arm_saw = document.getElementById('first-left-arm_2_');
-
-    var right_arm_saw2 = document.getElementById('right-arm_x5F_saw2');
-    var first_right_arm_saw2 = document.getElementById('first-right-arm_x5F_saw2');
-    var left_arm_saw2 = document.getElementById('left-arm_x5F_saw2');
-    var first_left_arm_saw2 = document.getElementById('first-left-arm_7_');
-    // gameCharForest.onmousedown = function() {
-    //     gameAnimationCharSaw();
-    // };
-    // wood_extraction.onmousedown = function() {
-    //     gameAnimationCharSaw();
-    // };
-    function gameAnimationCharSaw() {
-        pupils.classList.add('pupils_saw');
-        mouthsmile.classList.add('display-block');
-        mouth.classList.add('display-block');
-
-        right_arm_saw.classList.add('right_arm_saw');
-        first_right_arm_saw.classList.add('first_right_arm_saw');
-        left_arm_saw.classList.add('left_arm_saw');
-        first_left_arm_saw.classList.add('first_left_arm_saw');
-
-        right_arm_saw2.classList.add('right_arm_saw');
-        first_right_arm_saw2.classList.add('first_right_arm_saw');
-        left_arm_saw2.classList.add('left_arm_saw');
-        first_left_arm_saw2.classList.add('first_left_arm_saw');
-    };
-    // gameCharForest.onmouseup = function() {
-    //     gameAnimationCharSawUp();
-    // };
-    // wood_extraction.onmouseup = function() {
-    //     gameAnimationCharSawUp();
-    // };
-    function gameAnimationCharSawUp() {
-        pupils.classList.remove('pupils_saw');
-        mouthsmile.classList.remove('display-block');
-        mouth.classList.remove('display-block');
-
-        right_arm_saw.classList.remove('right_arm_saw');
-        first_right_arm_saw.classList.remove('first_right_arm_saw');
-        left_arm_saw.classList.remove('left_arm_saw');
-        first_left_arm_saw.classList.remove('first_left_arm_saw');
-
-        right_arm_saw2.classList.remove('right_arm_saw');
-        first_right_arm_saw2.classList.remove('first_right_arm_saw');
-        left_arm_saw2.classList.remove('left_arm_saw');
-        first_left_arm_saw2.classList.remove('first_left_arm_saw');
-    };
-
-// скалы
+    // скалы
     cliffs.onclick = function () {
         gameModel.activeLocation = LOCATION.cliffs;
         setBtnsIslandVisibility();
@@ -151,62 +97,7 @@
         var options = getOptionsAnimation(gameModel.char.armCliffs);
         setListeners(gameCharCliffs, options);
     };
-     // перфы
-    var right_arm_perf = document.getElementById('right-arm_x5F_perf');
-    var first_right_arm_perf = document.getElementById('first-right-arm_x5F_perf');
-    var left_arm_perf = document.getElementById('left-arm_x5F_perf');
-    var first_left_arm_perf = document.getElementById('first-left-arm_5_');
-
-    var right_arm_perf2 = document.getElementById('right-arm_x5F_perf2');
-    var first_right_arm_perf2 = document.getElementById('first-right-arm_x5F_perf2');
-    var left_arm_perf2 = document.getElementById('left-arm_x5F_perf2');
-    var first_left_arm_perf2 = document.getElementById('first-left-arm_6_');
-
-    // gameCharCliffs.onmousedown = function() {
-    //     gameAnimationCharPerf();
-    // };
-    // stone_extraction.onmousedown = function() {
-    //     gameAnimationCharPerf();
-    // };
-    function gameAnimationCharPerf() {
-        pupils2.classList.add('pupils_saw');
-        mouthsmile2.classList.add('display-block');
-
-        right_arm_perf.classList.add('right_arm_perf');
-        first_right_arm_perf.classList.add('first_right_arm_perf');
-        left_arm_perf.classList.add('left_arm_perf');
-        first_left_arm_perf.classList.add('first_left_arm_perf');
-
-        right_arm_perf2.classList.add('right_arm_perf');
-        first_right_arm_perf2.classList.add('first_right_arm_perf');
-        left_arm_perf2.classList.add('left_arm_perf');
-        first_left_arm_perf2.classList.add('first_left_arm_perf');
-    }
-
-    // gameCharCliffs.onmouseup = function() {
-    //     gameAnimationCharPerfUp();
-    // };
-    // stone_extraction.onmouseup = function() {
-    //     gameAnimationCharPerfUp();
-    // };
-    function gameAnimationCharPerfUp() {
-        pupils2.classList.remove('pupils_saw');
-        mouthsmile2.classList.remove('display-block');
-
-        right_arm_perf.classList.remove('right_arm_perf');
-        first_right_arm_perf.classList.remove('first_right_arm_perf');
-        left_arm_perf.classList.remove('left_arm_perf');
-        first_left_arm_perf.classList.remove('first_left_arm_perf');
-
-        right_arm_perf2.classList.remove('right_arm_perf');
-        first_right_arm_perf2.classList.remove('first_right_arm_perf');
-        left_arm_perf2.classList.remove('left_arm_perf');
-        first_left_arm_perf2.classList.remove('first_left_arm_perf');
-    };
-
-
-
-//причал
+    //причал
     var dealer = document.getElementById('game-dealer');
     var menuDealer = document.getElementById('game-menu-dealer');
     var closeMenuDealer = document.getElementById('btn-close_x5F_menu');
@@ -275,7 +166,7 @@
                 if(gameModel.char.armForest.indexOf('axe') !== -1){
                     gameAnimationCharLevel1(options);
                 } else if(gameModel.char.armForest.indexOf('saw') !== -1){
-
+                    gameAnimationCharLevel2Down(options);
                 }
                 break;
             }
@@ -283,8 +174,12 @@
                 if(gameModel.char.armCliffs.indexOf('pick') !== -1){
                     gameAnimationCharLevel1(options);
                 } else if(gameModel.char.armCliffs.indexOf('perf') !== -1){
-
+                    gameAnimationCharLevel2Down(options);
                 }
+                break;
+            }
+            case 'pier' : {
+
                 break;
             }
         }
@@ -296,7 +191,7 @@
                 if(gameModel.char.armForest.indexOf('axe') !== -1){
 
                 } else if(gameModel.char.armForest.indexOf('saw') !== -1){
-
+                    gameAnimationCharLevel2Up(options);
                 }
                 break;
             }
@@ -304,7 +199,7 @@
                 if(gameModel.char.armCliffs.indexOf('pick') !== -1){
 
                 } else if(gameModel.char.armCliffs.indexOf('perf') !== -1){
-
+                    gameAnimationCharLevel2Up(options);
                 }
                 break;
             }
@@ -337,7 +232,7 @@
     }
 
     function getOptionsAnimation(arm) {
-        var _result, _rightArm;
+        var _result, _rightArm, _leftArm, _firstRightArm, _firstLeftArm;
         switch (gameModel.activeLocation){
             case 'forest' : {
                 if(arm.indexOf('axe') !== -1){
@@ -380,9 +275,35 @@
                     };
 
                 } else if(arm.indexOf('saw') !== -1){
-                    //todo saw
-                }
+                    switch (arm){
+                        case 'saw_1': {
+                            _rightArm = {DOM: document.getElementById('right-arm_x5F_saw'), animationClass: 'right_arm_saw'};
+                            _leftArm = {DOM: document.getElementById('left-arm_x5F_saw'), animationClass: 'left_arm_saw'};
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_saw'), animationClass: 'first_right_arm_saw'};
+                            _firstLeftArm = {DOM: document.getElementById('first-left-arm_2_'), animationClass: 'first_left_arm_saw'};
+                            break;
+                        }
 
+                        case 'saw_2': {
+                            _rightArm =  {DOM: document.getElementById('right-arm_x5F_saw2'), animationClass: 'right_arm_saw'};
+                            _leftArm = {DOM: document.getElementById('left-arm_x5F_saw2'), animationClass: 'left_arm_saw'};
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_saw2'), animationClass: 'first_right_arm_saw'};
+                            _firstLeftArm = {DOM: document.getElementById('first-left-arm_7_'), animationClass: 'first_left_arm_saw'};
+                            break;
+                        }
+                    }
+
+                    _result = {
+                        pupils: document.getElementById('pupils_1_'),
+                        mouthsmile: document.getElementById('mouthsmile_1_'),
+                        mouth: document.getElementById('mouth'),
+                        right_arm: _rightArm,
+                        first_right_arm: _firstRightArm,
+                        left_arm: _leftArm,
+                        first_left_arm: _firstLeftArm,
+                        delay: 2000
+                    };
+                }
                 break;
             }
             case 'cliffs' : {
@@ -425,7 +346,34 @@
                         delay: 2000
                     };
                 } else if(gameModel.char.armCliffs.indexOf('perf') !== -1){
-                    //todo perf
+                    switch (arm){
+                        case 'perf_1': {
+                            _rightArm = {DOM: document.getElementById('right-arm_x5F_perf'), animationClass: 'right_arm_perf'};
+                            _leftArm = {DOM: document.getElementById('left-arm_x5F_perf'), animationClass: 'left_arm_perf'};
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_perf'), animationClass: 'first_right_arm_perf'};
+                            _firstLeftArm = {DOM: document.getElementById('first-left-arm_5_'), animationClass: 'first_left_arm_perf'};
+                            break;
+                        }
+
+                        case 'perf_2': {
+                            _rightArm = {DOM: document.getElementById('right-arm_x5F_perf2'), animationClass: 'right_arm_perf'};
+                            _leftArm = {DOM: document.getElementById('left-arm_x5F_perf2'), animationClass: 'left_arm_perf'};
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_perf2'), animationClass: 'first_right_arm_perf'};
+                            _firstLeftArm = {DOM: document.getElementById('first-left-arm_6_'), animationClass: 'first_left_arm_perf'};
+                            break;
+                        }
+                    }
+
+                    _result = {
+                        pupils: document.getElementById('pupils_3_'),
+                        mouthsmile: document.getElementById('mouthsmile_3_'),
+                        mouth: document.getElementById('mouth_1_'),
+                        right_arm: _rightArm,
+                        first_right_arm: _firstRightArm,
+                        left_arm: _leftArm,
+                        first_left_arm: _firstLeftArm,
+                        delay: 2000
+                    };
                 }
                 break;
             }
@@ -458,6 +406,28 @@
                 options.first_left_arm.classList.toggle('first_left_armex');
             }, options.delay);
         }
+    }
+
+    function gameAnimationCharLevel2Down(options){
+        options.pupils.classList.add('pupils_saw');
+        options.mouthsmile.classList.add('display-block');
+        options.mouth.classList.add('display-block');
+
+        options.right_arm.DOM.classList.add(options.right_arm.animationClass);
+        options.first_right_arm.DOM.classList.add(options.first_right_arm.animationClass);
+        options.left_arm.DOM.classList.add(options.left_arm.animationClass);
+        options.first_left_arm.DOM.classList.add(options.first_left_arm.animationClass);
+    }
+
+    function gameAnimationCharLevel2Up(options){
+        options.pupils.classList.remove('pupils_saw');
+        options.mouthsmile.classList.remove('display-block');
+        options.mouth.classList.remove('display-block');
+
+        options.right_arm.DOM.classList.remove(options.right_arm.animationClass);
+        options.first_right_arm.DOM.classList.remove(options.first_right_arm.animationClass);
+        options.left_arm.DOM.classList.remove(options.left_arm.animationClass);
+        options.first_left_arm.DOM.classList.remove(options.first_left_arm.animationClass);
     }
 
     function setBtnsIslandVisibility(){
