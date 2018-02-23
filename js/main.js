@@ -7,12 +7,32 @@
         pier: 'pier'
     };
 
+    var ARMS_IDS = {
+        'axe_1': ['right-arm_x5F_ex', 'left-arm_3_', 'first-left-arm_3_', 'first-right-arm_3_'],
+        'axe_2': ['right-arm_x5F_ex', 'left-arm_3_', 'first-left-arm_3_', 'first-right-arm_x5F_ex2'],
+        'axe_3': ['right-arm_x5F_ex', 'left-arm_3_', 'first-left-arm_3_', 'first-right-arm_x5F_ex3'],
+        'axe_4': ['right-arm_x5F_ex', 'left-arm_3_', 'first-left-arm_3_', 'first-right-arm_x5F_ex4'],
+        'axe_5': ['right-arm_x5F_ex', 'left-arm_3_', 'first-left-arm_3_', 'first-right-arm_x5F_ex5'],
+
+        'saw_1': ['right-arm_x5F_saw', 'left-arm_x5F_saw', 'first-right-arm_x5F_saw', 'first-left-arm_2_'],
+        'saw_2': ['right-arm_x5F_saw2', 'left-arm_x5F_saw2', 'first-right-arm_x5F_saw2', 'first-left-arm_7_'],
+
+        'pick_1': ['right-armpick_1_', 'left-arm_2_', 'first-left-arm_4_', 'first-right-arm_4_'],
+        'pick_2': ['right-armpick_1_', 'left-arm_2_', 'first-left-arm_4_', 'first-right-arm_x5F_pick2'],
+        'pick_3': ['right-armpick_1_', 'left-arm_2_', 'first-left-arm_4_', 'first-right-arm_x5F_pick3'],
+        'pick_4': ['right-armpick_1_', 'left-arm_2_', 'first-left-arm_4_', 'first-right-arm_x5F_pick4_1_'],
+        'pick_5': ['right-armpick_1_', 'left-arm_2_', 'first-left-arm_4_', 'first-right-arm_x5F_pick5'],
+
+        'perf_1': ['right-arm_x5F_perf', 'left-arm_x5F_perf', 'first-right-arm_x5F_perf', 'first-left-arm_5_'],
+        'perf_2': ['right-arm_x5F_perf2', 'left-arm_x5F_perf2', 'first-right-arm_x5F_perf2', 'first-left-arm_6_']
+    };
+
     var gameModel = {
         activeLocation: 'enterPage',
         activeAnimation: false,
         char: {
-            armForest: 'axe_1',
-            armCliffs: 'pick_1',
+            armForest: null,
+            armCliffs: null,
             strength: 0,
             intelligence: 0,
             agi: 0,
@@ -30,6 +50,7 @@
     var exitBtn = document.getElementById('exit');
     var backBtn = document.getElementById('back');
     var charBtn = document.getElementById('char');
+    var menuBagItems = document.getElementById('bag_x5F_char');
 
     var modalwindow = document.getElementById('modalwindow');
     var mainwindow = document.getElementById('mainwindow');
@@ -52,6 +73,8 @@
     var outstone = document.getElementById('outstone');
     var outwood = document.getElementById('outwood');
 
+    setArmAfterStartGame();
+
     startGameBtn.onclick = function() {
         startExitGame('enter');
 
@@ -64,6 +87,77 @@
 
         //todo clear counters
     };
+
+    menuBagItems.addEventListener('touchstart', function(evt){
+        var _item = findGElement(evt.target),
+            _itemId = _item.getAttribute('id');
+
+        if(_item.classList.contains('arm-forest')){
+            switch(_itemId){
+                case 'ex-pick_x5F_bag' : {
+                    gameModel.char.armForest = 'axe_1';
+                    break;
+                }
+                case 'ex2-pick_x5F_bag' : {
+                    gameModel.char.armForest = 'axe_2';
+                    break;
+                }
+                case 'ex3-pick_x5F_bag' : {
+                    gameModel.char.armForest = 'axe_3';
+                    break;
+                }
+                case 'ex4-pick_x5F_bag' : {
+                    gameModel.char.armForest = 'axe_4';
+                    break;
+                }
+                case 'ex5-pick_x5F_bag' : {
+                    gameModel.char.armForest = 'axe_5';
+                    break;
+                }
+                case 'saw-pick_x5F_bag' : {
+                    gameModel.char.armForest = 'saw_1';
+                    break;
+                }
+                case 'saw2-pick_x5F_bag_1_' : {
+                    gameModel.char.armForest = 'saw_2';
+                    break;
+                }
+            }
+        } else if(_item.classList.contains('arm-cliffs')){
+            switch(_itemId){
+                case 'pick-pick_x5F_bag' : {
+                    gameModel.char.armCliffs = 'pick_1';
+                    break;
+                }
+                case 'pick2-pick_x5F_bag' : {
+                    gameModel.char.armCliffs = 'pick_2';
+                    break;
+                }
+                case 'pick3-pick_x5F_bag' : {
+                    gameModel.char.armCliffs = 'pick_3';
+                    break;
+                }
+                case 'pick4-pick_x5F_bag' : {
+                    gameModel.char.armCliffs = 'pick_4';
+                    break;
+                }
+                case 'pick5-pick_x5F_bag' : {
+                    gameModel.char.armCliffs = 'pick_5';
+                    break;
+                }
+                case 'perf-pick_x5F_bag' : {
+                    gameModel.char.armCliffs = 'perf_1';
+                    break;
+                }
+                case 'perf2-pick_x5F_bag' : {
+                    gameModel.char.armCliffs = 'perf_2';
+                    break;
+                }
+            }
+        }
+
+        setVisibilityArm(gameModel.char);
+    });
 
     function startExitGame(action){
         modalwindow.classList.toggle('display-block');
@@ -468,6 +562,64 @@
                 break;
             }
         }
+    }
+
+    function setArmAfterStartGame(data){
+        if(data){
+
+        } else {
+            gameModel.char.armForest = 'axe_1';
+            gameModel.char.armCliffs = 'pick_1';
+            setVisibilityArm(gameModel.char);
+        }
+    }
+
+    function setVisibilityArm(char){
+        hideAllArms();
+        removeListenersHelper();
+        ARMS_IDS[char.armForest].forEach(function(id){
+            document.getElementById(id).classList.toggle('display-block');
+        });
+
+        ARMS_IDS[char.armCliffs].forEach(function(id){
+            document.getElementById(id).classList.toggle('display-block');
+        });
+
+        switch(gameModel.activeLocation){
+            case 'forest' : {
+                var optionsAnimForest = getOptionsAnimation(char.armForest);
+                setListeners(gameCharForest, optionsAnimForest);
+                break;
+            }
+            case 'cliffs' : {
+                var optionsAnimCliffs = getOptionsAnimation(gameModel.char.armCliffs);
+                setListeners(gameCharCliffs, optionsAnimCliffs);
+                break;
+            }
+            case 'pier' : {
+                break;
+            }
+        }
+    }
+
+    function hideAllArms(){
+        var _allArmsItems = document.querySelectorAll('.char-hand-part');
+
+        _allArmsItems.forEach(function(item){
+            if(item.classList.contains('display-block')){
+                item.classList.toggle('display-block');
+            }
+        })
+    }
+
+    function findGElement(elem){
+        var _elem = elem;
+
+        while(!_elem.classList.contains('bag-arm-item')){
+            _elem = _elem.parentElement;
+        }
+
+        return _elem;
     }
     
 })(appMethods);

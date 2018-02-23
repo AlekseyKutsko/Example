@@ -133,26 +133,11 @@ body {
 .game-modalpier,
 #game-menu-dealer,
 #game-menu-char,
+.char-hand-part,
 /*чар в лесу*/
 #mouthsmile_1_,
-#left-arm_x5F_saw2,
-#left-arm_x5F_saw,
-#right-arm_x5F_saw2,
-#right-arm_x5F_saw,
-#first-right-arm_x5F_ex5,
-#first-right-arm_x5F_ex4,
-#first-right-arm_x5F_ex3,
-#first-right-arm_x5F_ex2,
 /*чар в скалах*/
-#mouthsmile_3_,
-#left-arm_x5F_perf2,
-#left-arm_x5F_perf,
-#right-arm_x5F_perf2,
-#right-arm_x5F_perf,
-#first-right-arm_x5F_pick5,
-#first-right-arm_x5F_pick4_1_,
-#first-right-arm_x5F_pick3,
-#first-right-arm_x5F_pick2{
+#mouthsmile_3_ {
 	display: none;
 }
 #game-menu-char {
