@@ -29,7 +29,8 @@
 
     var gameModel = {
         activeLocation: 'enterPage',
-        activeAnimation: false,
+        activeAnimation: null,
+        timeOutAnimation: null,
         char: {
             armForest: null,
             armCliffs: null,
@@ -51,6 +52,7 @@
     var backBtn = document.getElementById('back');
     var charBtn = document.getElementById('char');
     var menuBagItems = document.getElementById('bag_x5F_char');
+    var menuChar = document.getElementById('game-menu-char');
 
     var modalwindow = document.getElementById('modalwindow');
     var mainwindow = document.getElementById('mainwindow');
@@ -93,70 +95,13 @@
             _itemId = _item.getAttribute('id');
 
         if(_item.classList.contains('arm-forest')){
-            switch(_itemId){
-                case 'ex-pick_x5F_bag' : {
-                    gameModel.char.armForest = 'axe_1';
-                    break;
-                }
-                case 'ex2-pick_x5F_bag' : {
-                    gameModel.char.armForest = 'axe_2';
-                    break;
-                }
-                case 'ex3-pick_x5F_bag' : {
-                    gameModel.char.armForest = 'axe_3';
-                    break;
-                }
-                case 'ex4-pick_x5F_bag' : {
-                    gameModel.char.armForest = 'axe_4';
-                    break;
-                }
-                case 'ex5-pick_x5F_bag' : {
-                    gameModel.char.armForest = 'axe_5';
-                    break;
-                }
-                case 'saw-pick_x5F_bag' : {
-                    gameModel.char.armForest = 'saw_1';
-                    break;
-                }
-                case 'saw2-pick_x5F_bag_1_' : {
-                    gameModel.char.armForest = 'saw_2';
-                    break;
-                }
-            }
+            processingArmForestMenu(_itemId);
         } else if(_item.classList.contains('arm-cliffs')){
-            switch(_itemId){
-                case 'pick-pick_x5F_bag' : {
-                    gameModel.char.armCliffs = 'pick_1';
-                    break;
-                }
-                case 'pick2-pick_x5F_bag' : {
-                    gameModel.char.armCliffs = 'pick_2';
-                    break;
-                }
-                case 'pick3-pick_x5F_bag' : {
-                    gameModel.char.armCliffs = 'pick_3';
-                    break;
-                }
-                case 'pick4-pick_x5F_bag' : {
-                    gameModel.char.armCliffs = 'pick_4';
-                    break;
-                }
-                case 'pick5-pick_x5F_bag' : {
-                    gameModel.char.armCliffs = 'pick_5';
-                    break;
-                }
-                case 'perf-pick_x5F_bag' : {
-                    gameModel.char.armCliffs = 'perf_1';
-                    break;
-                }
-                case 'perf2-pick_x5F_bag' : {
-                    gameModel.char.armCliffs = 'perf_2';
-                    break;
-                }
-            }
+            processingArmCliffsMenu(_itemId);
         }
 
         setVisibilityArm(gameModel.char);
+        menuChar.classList.toggle('display-block');
     });
 
     function startExitGame(action){
@@ -171,6 +116,19 @@
         removeListenersHelper();
         setBtnsIslandVisibility();
         setLocationVisibility();
+        //stop animation
+        if(gameModel.activeAnimation){
+            gameModel.activeAnimation.pupils.classList.toggle('pupils');
+            gameModel.activeAnimation.mouthsmile.classList.toggle('display-block');
+            gameModel.activeAnimation.mouth.classList.toggle('display-block');
+
+            gameModel.activeAnimation.right_arm.DOM.classList.toggle(gameModel.activeAnimation.right_arm.animationClass);
+            gameModel.activeAnimation.first_right_arm.DOM.classList.toggle(gameModel.activeAnimation.first_right_arm.animationClass);
+            gameModel.activeAnimation.left_arm.DOM.classList.toggle(gameModel.activeAnimation.left_arm.animationClass);
+            gameModel.activeAnimation.first_left_arm.DOM.classList.toggle(gameModel.activeAnimation.first_left_arm.animationClass);
+            gameModel.activeAnimation = null;
+            clearTimeout(gameModel.timeOutAnimation);
+        }
         gameModel.activeLocation = LOCATION.island;
     };
     // лес
@@ -248,7 +206,6 @@
     };
 
     // меню персонажа
-    var menuChar = document.getElementById('game-menu-char');
     charBtn.onclick = function () {
         menuChar.classList.toggle('display-block');
     };
@@ -332,39 +289,43 @@
                 if(arm.indexOf('axe') !== -1){
                     switch (arm){
                         case 'axe_1': {
-                            _rightArm = document.getElementById('first-right-arm_3_');
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_3_'), animationClass: 'first_right_armex'};
                             break;
                         }
 
                         case 'axe_2': {
-                            _rightArm = document.getElementById('first-right-arm_x5F_ex2');
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_ex2'), animationClass: 'first_right_armex'};
                             break;
                         }
 
                         case 'axe_3': {
-                            _rightArm = document.getElementById('first-right-arm_x5F_ex3');
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_ex3'), animationClass: 'first_right_armex'};
                             break;
                         }
 
                         case 'axe_4': {
-                            _rightArm = document.getElementById('first-right-arm_x5F_ex4');
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_ex4'), animationClass: 'first_right_armex'};
                             break;
                         }
 
                         case 'axe_5': {
-                            _rightArm = document.getElementById('first-right-arm_x5F_ex5');
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_ex5'), animationClass: 'first_right_armex'};
                             break;
                         }
                     }
+
+                    _leftArm = {DOM: document.getElementById('left-arm_3_'), animationClass: 'left_armex'};
+                    _rightArm = {DOM: document.getElementById('right-arm_x5F_ex'), animationClass: 'right_armex'};
+                    _firstLeftArm = {DOM: document.getElementById('first-left-arm_3_'), animationClass: 'first_left_armex'};
 
                     _result = {
                         pupils: document.getElementById('pupils_1_'),
                         mouthsmile: document.getElementById('mouthsmile_1_'),
                         mouth: document.getElementById('mouth'),
-                        right_arm: document.getElementById('right-arm_x5F_ex'),
-                        first_right_arm: _rightArm,
-                        left_arm: document.getElementById('left-arm_3_'),
-                        first_left_arm: document.getElementById('first-left-arm_3_'),
+                        right_arm: _rightArm,
+                        first_right_arm: _firstRightArm,
+                        left_arm: _leftArm,
+                        first_left_arm: _firstLeftArm,
                         delay: 2000
                     };
 
@@ -404,39 +365,43 @@
                 if(gameModel.char.armCliffs.indexOf('pick') !== -1){
                     switch (arm){
                         case 'pick_1': {
-                            _rightArm = document.getElementById('first-right-arm_4_');
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_4_'), animationClass: 'first_right_armex'};
                             break;
                         }
 
                         case 'pick_2': {
-                            _rightArm = document.getElementById('first-right-arm_x5F_pick2');
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_pick2'), animationClass: 'first_right_armex'};
                             break;
                         }
 
                         case 'pick_3': {
-                            _rightArm = document.getElementById('first-right-arm_x5F_pick3');
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_pick3'), animationClass: 'first_right_armex'};
                             break;
                         }
 
                         case 'pick_4': {
-                            _rightArm = document.getElementById('first-right-arm_x5F_pick4_1_');
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_pick4_1_'), animationClass: 'first_right_armex'};
                             break;
                         }
 
                         case 'pick_5': {
-                            _rightArm = document.getElementById('first-right-arm_x5F_pick5');
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_pick5'), animationClass: 'first_right_armex'};
                             break;
                         }
                     }
+
+                    _leftArm = {DOM: document.getElementById('left-arm_2_'), animationClass: 'left_armex'};
+                    _rightArm = {DOM: document.getElementById('right-armpick_1_'), animationClass: 'right_armex'};
+                    _firstLeftArm = {DOM: document.getElementById('first-left-arm_4_'), animationClass: 'first_left_armex'};
 
                     _result = {
                         pupils: document.getElementById('pupils_3_'),
                         mouthsmile: document.getElementById('mouthsmile_3_'),
                         mouth: document.getElementById('mouth_1_'),
-                        right_arm: document.getElementById('right-armpick_1_'),
-                        first_right_arm: _rightArm,
-                        left_arm: document.getElementById('left-arm_2_'),
-                        first_left_arm: document.getElementById('first-left-arm_4_'),
+                        right_arm: _rightArm,
+                        first_right_arm: _firstRightArm,
+                        left_arm: _leftArm,
+                        first_left_arm: _firstLeftArm,
                         delay: 2000
                     };
                 } else if(gameModel.char.armCliffs.indexOf('perf') !== -1){
@@ -478,26 +443,28 @@
 
     function gameAnimationCharLevel1(options) {
         if(!gameModel.activeAnimation){
-            gameModel.activeAnimation = true;
+            gameModel.activeAnimation = options;
 
             options.pupils.classList.toggle('pupils');
             options.mouthsmile.classList.toggle('display-block');
             options.mouth.classList.toggle('display-block');
-            options.right_arm.classList.toggle('right_armex');
-            options.first_right_arm.classList.toggle('first_right_armex');
-            options.left_arm.classList.toggle('left_armex');
-            options.first_left_arm.classList.toggle('first_left_armex');
 
-            setTimeout(function(){
-                gameModel.activeAnimation = false;
+            options.right_arm.DOM.classList.toggle(options.right_arm.animationClass);
+            options.first_right_arm.DOM.classList.toggle(options.first_right_arm.animationClass);
+            options.left_arm.DOM.classList.toggle(options.left_arm.animationClass);
+            options.first_left_arm.DOM.classList.toggle(options.first_left_arm.animationClass);
+
+            gameModel.timeOutAnimation = setTimeout(function(){
+                gameModel.activeAnimation = null;
 
                 options.pupils.classList.toggle('pupils');
                 options.mouthsmile.classList.toggle('display-block');
                 options.mouth.classList.toggle('display-block');
-                options.right_arm.classList.toggle('right_armex');
-                options.first_right_arm.classList.toggle('first_right_armex');
-                options.left_arm.classList.toggle('left_armex');
-                options.first_left_arm.classList.toggle('first_left_armex');
+
+                options.right_arm.DOM.classList.toggle(options.right_arm.animationClass);
+                options.first_right_arm.DOM.classList.toggle(options.first_right_arm.animationClass);
+                options.left_arm.DOM.classList.toggle(options.left_arm.animationClass);
+                options.first_left_arm.DOM.classList.toggle(options.first_left_arm.animationClass);
             }, options.delay);
         }
     }
@@ -597,6 +564,73 @@
                 break;
             }
             case 'pier' : {
+
+                break;
+            }
+        }
+    }
+
+    function processingArmForestMenu(id){
+        switch(id){
+            case 'ex-pick_x5F_bag' : {
+                gameModel.char.armForest = 'axe_1';
+                break;
+            }
+            case 'ex2-pick_x5F_bag' : {
+                gameModel.char.armForest = 'axe_2';
+                break;
+            }
+            case 'ex3-pick_x5F_bag' : {
+                gameModel.char.armForest = 'axe_3';
+                break;
+            }
+            case 'ex4-pick_x5F_bag' : {
+                gameModel.char.armForest = 'axe_4';
+                break;
+            }
+            case 'ex5-pick_x5F_bag' : {
+                gameModel.char.armForest = 'axe_5';
+                break;
+            }
+            case 'saw-pick_x5F_bag' : {
+                gameModel.char.armForest = 'saw_1';
+                break;
+            }
+            case 'saw2-pick_x5F_bag_1_' : {
+                gameModel.char.armForest = 'saw_2';
+                break;
+            }
+        }
+    }
+
+    function processingArmCliffsMenu(id){
+        switch(id){
+            case 'pick-pick_x5F_bag' : {
+                gameModel.char.armCliffs = 'pick_1';
+                break;
+            }
+            case 'pick2-pick_x5F_bag' : {
+                gameModel.char.armCliffs = 'pick_2';
+                break;
+            }
+            case 'pick3-pick_x5F_bag' : {
+                gameModel.char.armCliffs = 'pick_3';
+                break;
+            }
+            case 'pick4-pick_x5F_bag' : {
+                gameModel.char.armCliffs = 'pick_4';
+                break;
+            }
+            case 'pick5-pick_x5F_bag' : {
+                gameModel.char.armCliffs = 'pick_5';
+                break;
+            }
+            case 'perf-pick_x5F_bag' : {
+                gameModel.char.armCliffs = 'perf_1';
+                break;
+            }
+            case 'perf2-pick_x5F_bag' : {
+                gameModel.char.armCliffs = 'perf_2';
                 break;
             }
         }
