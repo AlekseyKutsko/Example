@@ -4,6 +4,7 @@
         island: 'island',
         forest: 'forest',
         cliffs: 'cliffs',
+        sea: 'sea',
         pier: 'pier'
     };
 
@@ -24,7 +25,11 @@
         'pick_5': ['right-armpick_1_', 'left-arm_2_', 'first-left-arm_4_', 'first-right-arm_x5F_pick5'],
 
         'perf_1': ['right-arm_x5F_perf', 'left-arm_x5F_perf', 'first-right-arm_x5F_perf', 'first-left-arm_5_'],
-        'perf_2': ['right-arm_x5F_perf2', 'left-arm_x5F_perf2', 'first-right-arm_x5F_perf2', 'first-left-arm_6_']
+        'perf_2': ['right-arm_x5F_perf2', 'left-arm_x5F_perf2', 'first-right-arm_x5F_perf2', 'first-left-arm_6_'],
+
+        'bucket_1': ['right-arm_x5F_bucket_1_', 'left-arm_4_', 'first-right-arm_x5F_bucket_1_', 'first-left-arm_8_'],
+        'bucket_2': ['right-arm_x5F_bucket_1_', 'left-arm_4_', 'first-right-arm_x5F_bucket2_2_', 'first-left-arm_8_'],
+        'bucket_2': ['right-arm_x5F_bucket_1_', 'left-arm_4_', 'first-right-arm_x5F_bucket3_1_', 'first-left-arm_8_']
     };
 
     var gameModel = {
@@ -34,6 +39,7 @@
         char: {
             armForest: null,
             armCliffs: null,
+            armSea: null,
             strength: 0,
             intelligence: 0,
             agi: 0,
@@ -69,6 +75,11 @@
     var gameCharForest = document.querySelector('#game-char-forest');
     var wood_extraction = document.getElementById('modalforest');
 
+    var sea = document.getElementById('sea');
+    var modalsea = document.querySelector('.game-modalsea');
+    var gameCharSea = document.querySelector('#game-char-sea');
+    var water_extraction = document.getElementById('modalsea');
+
     var pier = document.getElementById('pier');
     var modalpier = document.querySelector('.game-modalpier');
 
@@ -98,6 +109,8 @@
             processingArmForestMenu(_itemId);
         } else if(_item.classList.contains('arm-cliffs')){
             processingArmCliffsMenu(_itemId);
+        } else if(_item.classList.contains('arm-sea')){
+            processingArmSeaMenu(_itemId);
         }
 
         setVisibilityArm(gameModel.char);
@@ -149,10 +162,19 @@
         var options = getOptionsAnimation(gameModel.char.armCliffs);
         setListeners(gameCharCliffs, options);
     };
+    // озеро
+    sea.onclick = function () {
+        gameModel.activeLocation = LOCATION.sea;
+        setBtnsIslandVisibility();
+        setLocationVisibility();
+
+        var options = getOptionsAnimation(gameModel.char.armSea);
+        setListeners(gameCharSea, options);
+    };
     //причал
     var dealer = document.getElementById('game-dealer');
     var menuDealer = document.getElementById('game-menu-dealer');
-    var closeMenuDealer = document.getElementById('btn-close_x5F_menu');
+    var closeMenuDealer = document.getElementById('btn-close_x5F_menu_1_');
 
     pier.onclick = function () {
         gameModel.activeLocation = LOCATION.pier;
@@ -229,6 +251,14 @@
                 }
                 break;
             }
+             case 'sea' : {
+                if(gameModel.char.armSea.indexOf('bucket') !== -1){
+                    gameAnimationCharLevel1(options);
+                } else if(gameModel.char.armSea.indexOf('pupm') !== -1){
+                    gameAnimationCharLevel2Down(options);
+                }
+                break;
+            }
             case 'pier' : {
 
                 break;
@@ -250,6 +280,14 @@
                 if(gameModel.char.armCliffs.indexOf('pick') !== -1){
 
                 } else if(gameModel.char.armCliffs.indexOf('perf') !== -1){
+                    gameAnimationCharLevel2Up(options);
+                }
+                break;
+            }
+            case 'sea' : {
+                if(gameModel.char.armSea.indexOf('bucket') !== -1){
+                   
+                } else if(gameModel.char.armSea.indexOf('pupm') !== -1){
                     gameAnimationCharLevel2Up(options);
                 }
                 break;
@@ -436,6 +474,40 @@
                 }
                 break;
             }
+            case 'sea' : {
+                if(gameModel.char.armSea.indexOf('bucket') !== -1){
+                    switch (arm){
+                        case 'bucket_1': {
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_bucket_1_'), animationClass: 'first_right_arm_bucket'};
+                            break;
+                        }
+
+                        case 'bucket_2': {
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_bucket2_2_'), animationClass: 'first_right_arm_bucket'};
+                            break;
+                        }
+
+                        case 'bucket_3': {
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_bucket3_1_'), animationClass: 'first_right_arm_bucket'};
+                            break;
+                        }
+                    }
+
+                    _result = {
+                        pupils: document.getElementById('pupils_2_'),
+                        mouthsmile: document.getElementById('mouthsmile_2_'),
+                        mouth: document.getElementById('mouth_2_'),
+                        right_arm: document.getElementById('right-arm_x5F_bucket'),
+                        first_right_arm: _rightArm,
+                        left_arm: document.getElementById('left-arm_1_'),
+                        first_left_arm: document.getElementById('first-left-arm_1_'),
+                        delay: 2000
+                    };
+                } else if(gameModel.char.armCliffs.indexOf('perf') !== -1){
+                   
+                }
+                break;
+            }
         }
 
         return _result;
@@ -507,6 +579,10 @@
                 modalcliffs.classList.toggle('display-block');
                 break;
             }
+            case 'sea' : {
+                modalsea.classList.toggle('display-block');
+                break;
+            }
             case 'pier' : {
                 modalpier.classList.toggle('display-block');
                 break;
@@ -524,6 +600,10 @@
                 removeListeners(gameCharCliffs);
                 break;
             }
+            case 'sea' : {
+                removeListeners(gameCharSea);
+                break;
+            }
             case 'pier' : {
 
                 break;
@@ -537,6 +617,7 @@
         } else {
             gameModel.char.armForest = 'axe_1';
             gameModel.char.armCliffs = 'pick_1';
+            gameModel.char.armSea = 'bucket_1';
             setVisibilityArm(gameModel.char);
         }
     }
@@ -551,6 +632,9 @@
         ARMS_IDS[char.armCliffs].forEach(function(id){
             document.getElementById(id).classList.toggle('display-block');
         });
+        ARMS_IDS[char.armSea].forEach(function(id){
+            document.getElementById(id).classList.toggle('display-block');
+        });
 
         switch(gameModel.activeLocation){
             case 'forest' : {
@@ -561,6 +645,11 @@
             case 'cliffs' : {
                 var optionsAnimCliffs = getOptionsAnimation(gameModel.char.armCliffs);
                 setListeners(gameCharCliffs, optionsAnimCliffs);
+                break;
+            }
+            case 'sea' : {
+                var optionsAnimSea = getOptionsAnimation(gameModel.char.armSea);
+                setListeners(gameCharSea, optionsAnimSea);
                 break;
             }
             case 'pier' : {
