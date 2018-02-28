@@ -24,7 +24,16 @@
         'pick_5': ['right-armpick_1_', 'left-arm_2_', 'first-left-arm_4_', 'first-right-arm_x5F_pick5'],
 
         'perf_1': ['right-arm_x5F_perf', 'left-arm_x5F_perf', 'first-right-arm_x5F_perf', 'first-left-arm_5_'],
-        'perf_2': ['right-arm_x5F_perf2', 'left-arm_x5F_perf2', 'first-right-arm_x5F_perf2', 'first-left-arm_6_']
+        'perf_2': ['right-arm_x5F_perf2', 'left-arm_x5F_perf2', 'first-right-arm_x5F_perf2', 'first-left-arm_6_'],
+
+        'bucket_1': ['right-arm_x5F_bucket_1_', 'left-arm_4_', 'first-right-arm_x5F_bucket_1_', 'first-left-arm_8_'],
+        'bucket_2': ['right-arm_x5F_bucket_1_', 'left-arm_4_', 'first-right-arm_x5F_bucket2_2_', 'first-left-arm_8_'],
+        'bucket_3': ['right-arm_x5F_bucket_1_', 'left-arm_4_', 'first-right-arm_x5F_bucket3_1_', 'first-left-arm_8_'],
+        'bucket_4': ['right-arm_x5F_bucket_1_', 'left-arm_4_', 'first-right-arm_x5F_bucket4', 'first-left-arm_8_'],
+        'bucket_5': ['right-arm_x5F_bucket_1_', 'left-arm_4_', 'first-right-arm_x5F_bucket5', 'first-left-arm_8_'],
+
+        'pump_1': ['right-arm_x5F_pump', 'left-arm_x5F_pump', 'first-right-arm_x5F_pump', 'first-left-arm_1_', 'handle'],
+        'pump_2': ['right-arm_x5F_pump2', 'left-arm_x5F_pump', 'first-right-arm_x5F_pump2', 'first-left-arm_1_', 'handle2']
     };
 
     var gameModel = {
@@ -34,6 +43,7 @@
         char: {
             armForest: null,
             armCliffs: null,
+            armSea: null,
             strength: 0,
             intelligence: 0,
             agi: 0,
@@ -69,6 +79,11 @@
     var gameCharForest = document.querySelector('#game-char-forest');
     var wood_extraction = document.getElementById('modalforest');
 
+    var sea = document.getElementById('sea');
+    var modalsea = document.querySelector('.game-modalsea');
+    var gameCharSea = document.querySelector('#game-char-sea');
+    var water_extraction = document.getElementById('modalsea');
+
     var pier = document.getElementById('pier');
     var modalpier = document.querySelector('.game-modalpier');
 
@@ -97,6 +112,8 @@
         if(_item.classList.contains('arm-forest')){
             processingArmForestMenu(_itemId);
         } else if(_item.classList.contains('arm-cliffs')){
+            processingArmCliffsMenu(_itemId);
+        } else if(_item.classList.contains('arm-sea')){
             processingArmCliffsMenu(_itemId);
         }
 
@@ -149,10 +166,19 @@
         var options = getOptionsAnimation(gameModel.char.armCliffs);
         setListeners(gameCharCliffs, options);
     };
+    // озеро
+    sea.onclick = function () {
+        gameModel.activeLocation = LOCATION.sea;
+        setBtnsIslandVisibility();
+        setLocationVisibility();
+
+        var options = getOptionsAnimation(gameModel.char.armSea);
+        setListeners(gameCharSea, options);
+    };
     //причал
     var dealer = document.getElementById('game-dealer');
     var menuDealer = document.getElementById('game-menu-dealer');
-    var closeMenuDealer = document.getElementById('btn-close_x5F_menu');
+    var closeMenuDealer = document.getElementById('btn-close_x5F_menu_1_');
 
     pier.onclick = function () {
         gameModel.activeLocation = LOCATION.pier;
@@ -229,6 +255,14 @@
                 }
                 break;
             }
+             case 'sea' : {
+                if(gameModel.char.armSea.indexOf('bucket') !== -1){
+                    gameAnimationCharLevel1(options);
+                } else if(gameModel.char.armSea.indexOf('pupm') !== -1){
+                    gameAnimationCharLevel2Down(options);
+                }
+                break;
+            }
             case 'pier' : {
 
                 break;
@@ -250,6 +284,14 @@
                 if(gameModel.char.armCliffs.indexOf('pick') !== -1){
 
                 } else if(gameModel.char.armCliffs.indexOf('perf') !== -1){
+                    gameAnimationCharLevel2Up(options);
+                }
+                break;
+            }
+            case 'sea' : {
+                if(gameModel.char.armSea.indexOf('bucket') !== -1){
+                   
+                } else if(gameModel.char.armSea.indexOf('pupm') !== -1){
                     gameAnimationCharLevel2Up(options);
                 }
                 break;
@@ -283,7 +325,7 @@
     }
 
     function getOptionsAnimation(arm) {
-        var _result, _rightArm, _leftArm, _firstRightArm, _firstLeftArm;
+        var _result, _rightArm, _leftArm, _firstRightArm, _firstLeftArm, _handle;
         switch (gameModel.activeLocation){
             case 'forest' : {
                 if(arm.indexOf('axe') !== -1){
@@ -436,6 +478,84 @@
                 }
                 break;
             }
+            case 'sea' : {
+                if(gameModel.char.armSea.indexOf('bucket') !== -1){
+                    switch (arm){
+                        case 'bucket_1': {
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_bucket_1_'), animationClass: 'first_right_arm_bucket'};
+                            break;
+                        }
+
+                        case 'bucket_2': {
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_bucket2_2_'), animationClass: 'first_right_arm_bucket'};
+                            break;
+                        }
+
+                        case 'bucket_3': {
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_bucket3_1_'), animationClass: 'first_right_arm_bucket'};
+                            break;
+                        }
+
+                        case 'bucket_4': {
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_bucket4'), animationClass: 'first_right_arm_bucket'};
+                            break;
+                        }
+
+                        case 'bucket_5': {
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_bucket5'), animationClass: 'first_right_arm_bucket'};
+                            break;
+                        }
+                    }
+
+                    _leftArm = {DOM: document.getElementById('left-arm_4_'), animationClass: 'left_arm_bucket'};
+                    _rightArm = {DOM: document.getElementById('right-arm_x5F_bucket_1_'), animationClass: 'right_arm_bucket'};
+                    _firstLeftArm = {DOM: document.getElementById('first-left-arm_8_'), animationClass: 'first_left_arm_bucket'};
+
+                    _result = {
+                        pupils: document.getElementById('pupils_2_'),
+                        mouthsmile: document.getElementById('mouthsmile_2_'),
+                        mouth: document.getElementById('mouth_2_'),
+                        right_arm: _rightArm,
+                        first_right_arm: _firstRightArm,
+                        left_arm: _leftArm,
+                        first_left_arm: _firstLeftArm,
+                        delay: 2000
+                    };
+                } else if(gameModel.char.armSea.indexOf('pump') !== -1){
+                    switch (arm){
+                        case 'pump_1': {
+                            _rightArm = {DOM: document.getElementById('right-arm_x5F_pump'), animationClass: 'right_arm_perf'};
+                            _leftArm = {DOM: document.getElementById('left-arm_x5F_pump'), animationClass: 'left_arm_perf'};
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_pump'), animationClass: 'first_right_arm_perf'};
+                            _firstLeftArm = {DOM: document.getElementById('first-left-arm_1_'), animationClass: 'first_left_arm_perf'};
+                            _handle = {DOM: document.getElementById('handle'), animationClass: 'first_left_arm_perf'};
+                            break;
+                        }
+
+                        case 'pump_2': {
+                            _rightArm = {DOM: document.getElementById('right-arm_x5F_pump2'), animationClass: 'right_arm_perf'};
+                            _leftArm = {DOM: document.getElementById('left-arm_x5F_pump'), animationClass: 'left_arm_perf'};
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_pump2'), animationClass: 'first_right_arm_perf'};
+                            _firstLeftArm = {DOM: document.getElementById('first-left-arm_1_'), animationClass: 'first_left_arm_perf'};
+                            _handle = {DOM: document.getElementById('handle2'), animationClass: 'first_left_arm_perf'};
+                            break;
+                        }
+                    }
+
+                    _result = {
+                        pupils: document.getElementById('pupils_2_'),
+                        mouthsmile: document.getElementById('mouthsmile_2_'),
+                        mouth: document.getElementById('mouth_2_'),
+                        right_arm: _rightArm,
+                        first_right_arm: _firstRightArm,
+                        left_arm: _leftArm,
+                        first_left_arm: _firstLeftArm,
+                        handle: _handle,
+                        delay: 2000
+                    };
+                }
+                break;
+            }
         }
 
         return _result;
@@ -478,6 +598,7 @@
         options.first_right_arm.DOM.classList.add(options.first_right_arm.animationClass);
         options.left_arm.DOM.classList.add(options.left_arm.animationClass);
         options.first_left_arm.DOM.classList.add(options.first_left_arm.animationClass);
+        options.handle.DOM.classList.add(options.handle.animationClass);
     }
 
     function gameAnimationCharLevel2Up(options){
@@ -489,6 +610,7 @@
         options.first_right_arm.DOM.classList.remove(options.first_right_arm.animationClass);
         options.left_arm.DOM.classList.remove(options.left_arm.animationClass);
         options.first_left_arm.DOM.classList.remove(options.first_left_arm.animationClass);
+        options.handle.DOM.classList.add(options.handle.animationClass);
     }
 
     function setBtnsIslandVisibility(){
@@ -505,6 +627,10 @@
             }
             case 'cliffs' : {
                 modalcliffs.classList.toggle('display-block');
+                break;
+            }
+            case 'sea' : {
+                modalsea.classList.toggle('display-block');
                 break;
             }
             case 'pier' : {
@@ -524,6 +650,10 @@
                 removeListeners(gameCharCliffs);
                 break;
             }
+            case 'sea' : {
+                removeListeners(gameCharSea);
+                break;
+            }
             case 'pier' : {
 
                 break;
@@ -537,6 +667,7 @@
         } else {
             gameModel.char.armForest = 'axe_1';
             gameModel.char.armCliffs = 'pick_1';
+            gameModel.char.armSea = 'bucket_1';
             setVisibilityArm(gameModel.char);
         }
     }
@@ -547,8 +678,10 @@
         ARMS_IDS[char.armForest].forEach(function(id){
             document.getElementById(id).classList.toggle('display-block');
         });
-
         ARMS_IDS[char.armCliffs].forEach(function(id){
+            document.getElementById(id).classList.toggle('display-block');
+        });
+        ARMS_IDS[char.armSea].forEach(function(id){
             document.getElementById(id).classList.toggle('display-block');
         });
 
@@ -561,6 +694,11 @@
             case 'cliffs' : {
                 var optionsAnimCliffs = getOptionsAnimation(gameModel.char.armCliffs);
                 setListeners(gameCharCliffs, optionsAnimCliffs);
+                break;
+            }
+            case 'sea' : {
+                var optionsAnimSea = getOptionsAnimation(gameModel.char.armSea);
+                setListeners(gameCharSea, optionsAnimSea);
                 break;
             }
             case 'pier' : {
@@ -631,6 +769,39 @@
             }
             case 'perf2-pick_x5F_bag' : {
                 gameModel.char.armCliffs = 'perf_2';
+                break;
+            }
+        }
+    }
+
+    function processingArmSeaMenu(id){
+        switch(id){
+            case 'bucket-pick_x5F_bag' : {
+                gameModel.char.armCliffs = 'bucket_1';
+                break;
+            }
+            case 'bucket2-pick_x5F_bag' : {
+                gameModel.char.armCliffs = 'bucket_2';
+                break;
+            }
+            case 'bucket3-pick_x5F_bag' : {
+                gameModel.char.armCliffs = 'bucket_3';
+                break;
+            }
+            case 'bucket4-pick_x5F_bag' : {
+                gameModel.char.armCliffs = 'bucket_4';
+                break;
+            }
+            case 'bucket5-pick_x5F_bag' : {
+                gameModel.char.armCliffs = 'bucket_5';
+                break;
+            }
+            case 'pump-pick_x5F_bag' : {
+                gameModel.char.armCliffs = 'pump_1';
+                break;
+            }
+            case 'pump2-pick_x5F_bag' : {
+                gameModel.char.armCliffs = 'pump_2';
                 break;
             }
         }
