@@ -4,6 +4,7 @@
         island: 'island',
         forest: 'forest',
         cliffs: 'cliffs',
+        sea: 'sea',
         pier: 'pier'
     };
 
