@@ -163,12 +163,12 @@ body {
 	left: 35%;
 }
 #game-char-sea{
-	left:25%;
+	left:22%;
 	top:0%;
 }
 #game-barrel{
 	left:23%;
-	top:24%;
+	bottom: 10%;
 }
 #game-dealer {
 	left: 12%;
