@@ -445,22 +445,73 @@ body {
 	animation-fill-mode: forwards;
 }
 
-@keyframes right_arm_perf {
+@keyframes right_arm_bucket {
 	70%, 100% {
 		transform: rotate(-80deg);
 	}
 }
-@keyframes first_right_arm_perf {
+@keyframes first_right_arm_bucket {
 	70%, 100% {
 		transform: rotate(65deg);
 	}
 }
-@keyframes left_arm_perf {
+@keyframes left_arm_bucket {
 	70%, 100% {
 		transform: rotate(-16deg);
 	}
 }
-@keyframes first_left_arm_perf {
+@keyframes first_left_arm_bucket {
+	70%, 100% {
+		transform: rotate(-28deg);
+	}
+}
+/*Анимация с насосами*/
+.right_arm_pump {
+	animation-name: right_arm_pump;
+	animation-duration: 2s;
+	transform-origin: 24% 51%;
+	animation-fill-mode: forwards;
+}
+.first_right_arm_pump {
+	animation-name: first_right_arm_pump;
+	animation-duration: 2s;
+	transform-origin: 15% 58%;
+	animation-fill-mode: forwards;
+}
+.left_arm_pump {
+	animation-name: left_arm_pump;
+	animation-duration: 2s;
+	transform-origin: 38% 49%;
+	animation-fill-mode: forwards;
+}
+.first_left_arm_pump {
+	animation-name: first_left_arm_pump;
+	animation-duration: 2s;
+	transform-origin: 45% 56.5%;
+	animation-fill-mode: forwards;
+}
+.handle {
+	animation-name: first_left_arm_pump;
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes right_arm_pump {
+	70%, 100% {
+		transform: rotate(-80deg);
+	}
+}
+@keyframes first_right_arm_pump {
+	70%, 100% {
+		transform: rotate(65deg);
+	}
+}
+@keyframes left_arm_pump {
+	70%, 100% {
+		transform: rotate(-16deg);
+	}
+}
+@keyframes first_left_arm_pump {
 	70%, 100% {
 		transform: rotate(-28deg);
 	}
