@@ -163,12 +163,8 @@ body {
 	left: 35%;
 }
 #game-char-sea{
-	left:22%;
-	top:0%;
-}
-#game-barrel{
-	left:23%;
-	bottom: 10%;
+	left:21%;
+	top:1%;
 }
 #game-dealer {
 	left: 12%;
@@ -423,26 +419,22 @@ body {
 .right_arm_bucket {
 	animation-name: right_arm_bucket;
 	animation-duration: 2s;
-	transform-origin: 24% 51%;
-	animation-fill-mode: forwards;
+	transform-origin: 43% 50%;
 }
 .first_right_arm_bucket {
 	animation-name: first_right_arm_bucket;
 	animation-duration: 2s;
-	transform-origin: 15% 58%;
-	animation-fill-mode: forwards;
+	transform-origin: 37% 57%;
 }
 .left_arm_bucket {
 	animation-name: left_arm_bucket;
 	animation-duration: 2s;
-	transform-origin: 38% 49%;
-	animation-fill-mode: forwards;
+	transform-origin: 52% 48%;
 }
 .first_left_arm_bucket {
 	animation-name: first_left_arm_bucket;
 	animation-duration: 2s;
-	transform-origin: 45% 56.5%;
-	animation-fill-mode: forwards;
+	transform-origin: 55% 56%;
 }
 
 @keyframes right_arm_bucket {
@@ -491,7 +483,7 @@ body {
 	animation-fill-mode: forwards;
 }
 .handle {
-	animation-name: first_left_arm_pump;
+	animation-name: hundle_pump;
 	animation-duration: 2s;
 	animation-fill-mode: forwards;
 }
@@ -512,6 +504,11 @@ body {
 	}
 }
 @keyframes first_left_arm_pump {
+	70%, 100% {
+		transform: rotate(-28deg);
+	}
+}
+@keyframes hundle_pump {
 	70%, 100% {
 		transform: rotate(-28deg);
 	}

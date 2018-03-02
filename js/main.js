@@ -1,3 +1,157 @@
+/*
+ МЕНЮ ТОРГОВЦА
+
+        Продажа
+
+    var btnMinusWoodSell = document.getElementById('minus-wood_x5F_sell'); - кнопка, уменьшает количество продаваемого дерева, можно зажать
+    var btnPlusWoodSell = document.getElementById('plus-wood_x5F_sell'); - кнопка, увеличивает количество продаваемого дерева, можно зажать
+    var quantityWoodSell = document.getElementById('quantity-wood_x5F_sell'); - отображает количество продаваемого дерева
+    var moneyWoodSell = document.getElementById('money-wood_x5F_sell'); - отображает количество денег за продаваемое дерево
+    var btnSellWood = document.getElementById('btn-sell_x5F_wood'); - кнопка, продажа
+
+    var btnMinusStoneSell = document.getElementById('minus-stone_x5F_sell');
+    var btnPlusStoneSell = document.getElementById('plus-stone_x5F_sell');
+    var quantityStoneSell = document.getElementById('quantity-stone_x5F_sell');
+    var moneyStoneSell = document.getElementById('money-stone_x5F_sell');
+    var btnSellStone = document.getElementById('btn-sell_x5F_stone');
+
+    var btnMinusWaterSell = document.getElementById('minus-water_x5F_sell');
+    var btnPlusWaterSell = document.getElementById('plus-water_x5F_sell');
+    var quantityWaterSell = document.getElementById('quantity-water_x5F_sell');
+    var moneyWaterSell = document.getElementById('money-water_x5F_sell');
+    var btnSellWater = document.getElementById('btn-sell_x5F_water');
+
+    var btnMinusEarthSell = document.getElementById('minus-earth_x5F_sell');
+    var btnPlusEarthSell = document.getElementById('plus-earth_x5F_sell');
+    var quantityEarthSell = document.getElementById('quantity-earth_x5F_sell');
+    var moneyEarthSell = document.getElementById('money-earth_x5F_sell');
+    var btnSellEarth = document.getElementById('btn-sell_x5F_earth');
+
+        Покупка ( для покупки инструмента нужно определенное количество ресурса и денег)
+
+    var btnBuyEx2 = document.getElementById('btn-buy_x5F_ex2');
+    var btnBuyEx3 = document.getElementById('btn-buy_x5F_ex3');
+    var btnBuySaw = document.getElementById('btn-buy_x5F_saw');
+    var btnBuyEx4 = document.getElementById('btn-buy_x5F_ex4');
+    var btnBuyEx5 = document.getElementById('btn-buy_x5F_ex5');
+    var btnBuySaw2 = document.getElementById('btn-buy_x5F_saw2');
+    var btnBuyPick2 = document.getElementById('btn-buy_x5F_pick2');
+    var btnBuyPick3 = document.getElementById('btn-buy_x5F_pick3');
+    var btnBuyPerf = document.getElementById('btn-buy_x5F_perf');
+    var btnBuyPick4 = document.getElementById('btn-buy_x5F_pick4');
+    var btnBuyPick5 = document.getElementById('btn-buy_x5F_pick5');
+    var btnBuyPerf2 = document.getElementById('btn-buy_x5F_perf2');
+    var btnBuyBucket2 = document.getElementById('btn-buy_x5F_bucket2');
+    var btnBuyBucket3 = document.getElementById('btn-buy_x5F_bucket3');
+    var btnBuyPump = document.getElementById('btn-buy_x5F_pump');
+    var btnBuyBucket4 = document.getElementById('btn-buy_x5F_bucket4');
+    var btnBuyBucket5 = document.getElementById('btn-buy_x5F_bucket5');
+    var btnBuyPump2 = document.getElementById('btn-buy_x5F_pump2');
+
+ МЕНЮ ПЕРСОНАЖА
+
+        Статусы
+
+    var statusPoints = document.getElementById('quantity-status-point'); - количество очков статов, добавляются за удаленные деревья, скалы, водицу
+
+    var needStatusPointStr = document.getElementById('quantity-need-status_x5F_str'); - необходимое количество очков статов для апа силы, ростет с каждым апом в арифметической прогрессии
+    var upStr = document.getElementById('up-pick_x5F_str'); - кнопка апа силы
+    var statusPointStr = document.getElementById('quantity-status_x5F_str'); - количество силы, влияет на количество добываемого ресурса инструментом первого уровня
+
+    var needStatusPointAgi = document.getElementById('quantity-need-status_x5F_agi'); - необходимое количество очков статов для апа ловкости, ростет с каждым апом в арифметической прогрессии
+    var upAgi = document.getElementById('up-pick_x5F_agi'); - кнопка апа ловкости
+    var statusPointAgi = document.getElementById('quantity-status_x5F_agi'); - количество ловкости, влияет на скорость добычи инструментом первого уровня
+
+    var needStatusPointInt = document.getElementById('quantity-need-status_x5F_int'); - необходимое количество очков статов для апа интелекта, ростет с каждым апом в арифметической прогрессии
+    var upInt = document.getElementById('up-pick_x5F_int'); - кнопка апа интелекта
+    var statusPointInt = document.getElementById('quantity-status_x5F_int'); - количество интелекта, влияет на возможность использования инструмента второго уровня
+
+        Сумка с инструментом ( инструмент появляется в сумке только после покупки у торговца, для использования инструмента необходимо иметь определенное количество статов для каждого инструмента)
+        
+    id="pump2-pick_x5F_bag"
+    id="bucket5-pick_x5F_bag"
+    id="bucket4-pick_x5F_bag"
+    id="pump-pick_x5F_bag"
+    id="bucket3-pick_x5F_bag"
+    id="bucket2-pick_x5F_bag"
+    id="bucket-pick_x5F_bag"
+
+    id="perf2-pick_x5F_bag"
+    id="pick5-pick_x5F_bag"
+    id="pick4-pick_x5F_bag"
+    id="perf-pick_x5F_bag"
+    id="pick3-pick_x5F_bag"
+    id="pick2-pick_x5F_bag"
+    id="pick-pick_x5F_bag"
+
+    id="saw2-pick_x5F_bag"
+    id="ex5-pick_x5F_bag"
+    id="ex4-pick_x5F_bag"
+    id="saw-pick_x5F_bag"
+    id="ex3-pick_x5F_bag"
+    id="ex2-pick_x5F_bag"
+    id="ex-pick_x5F_bag"
+
+УДАЛЯЕМЫЕ ДЕРЕВЬЯ, СКАЛЫ, ОЗЕРО
+    
+        Деревья 
+    
+    id="forest" - общая группа деревьев
+    id="tree1" по id="tree488" - удаляются по очереди
+
+        Скалы
+
+    id="cliffs" - общая группа скал
+        Порядок удаления:
+    id="cliff1"
+    id="cliff2"
+    id="cliff3"
+    id="cliff4"
+    id="cliff5"
+    id="cliff6"
+    id="cliff7"
+    id="cliff8"
+    id="cliff9"
+    id="cliff10"
+    id="cliff11"
+    id="cliff12"
+    id="cliff13"
+    id="cliff14"
+    id="cliff8-2"
+    id="cliff9-2"
+    id="cliff10-2"
+    id="cliff11-2"
+    id="cliff12-2"
+    id="cliff13-2"
+    id="cliff14-2"
+    id="cliff9-3"
+    id="cliff11-3"
+    id="cliff12-3"
+    id="cliff13-3"
+    id="cliff14-3"
+    id="cliff12-4"
+    id="cliff13-4"
+    id="cliff14-4"
+    id="cliff14-5"
+
+        Озеро
+
+    id="sea" - общая группа озера
+        Порядок удаления:
+    id="sea1"
+    id="sea2"
+    id="sea3"
+    id="sea4"
+    id="sea5"
+    id="sea6"
+    id="sea7"
+    id="sea8"
+    id="sea9"
+    id="sea10"
+    id="sea11"
+
+*/
+
 (function(appMethods){
     var LOCATION = {
         enterPage: 'enterPage',
@@ -186,44 +340,6 @@
         setBtnsIslandVisibility();
         setLocationVisibility();
     };
-    // меню торговца
-        // продажа
-    var quantityWoodSell = document.getElementById('quantity-wood_x5F_sell');
-    var moneyWoodSell = document.getElementById('money-wood_x5F_sell');
-    var btnMinusWoodSell = document.getElementById('minus-wood_x5F_sell');
-    var btnPlusWoodSell = document.getElementById('plus-wood_x5F_sell');
-    var btnSellWood = document.getElementById('btn-sell_x5F_wood');
-
-    var quantityStoneSell = document.getElementById('quantity-stone_x5F_sell');
-    var moneyStoneSell = document.getElementById('money-stone_x5F_sell');
-    var btnMinusStoneSell = document.getElementById('minus-stone_x5F_sell');
-    var btnPlusStoneSell = document.getElementById('plus-stone_x5F_sell');
-    var btnSellStone = document.getElementById('btn-sell_x5F_stone');
-        // покупка
-    var quantityWoodBuy = document.getElementById('quantity-wood_x5F_buy');
-    var moneyWoodBuy = document.getElementById('money-wood_x5F_buy');
-    var btnMinusWoodBuy = document.getElementById('minus-wood_x5F_buy');
-    var btnPlusWoodBuy = document.getElementById('plus-wood_x5F_buy');
-    var btnBuyWood = document.getElementById('btn-buy_x5F_wood');
-
-    var quantityStoneSell = document.getElementById('quantity-stone_x5F_buy');
-    var moneyStoneSell = document.getElementById('money-stone_x5F_buy');
-    var btnMinusStoneBuy = document.getElementById('minus-stone_x5F_buy');
-    var btnPlusStoneBuy = document.getElementById('plus-stone_x5F_buy');
-    var btnBuyStone = document.getElementById('btn-buy_x5F_stone');
-
-    var btnBuyEx2 = document.getElementById('btn-buy_x5F_ex2');
-    var btnBuyEx3 = document.getElementById('btn-buy_x5F_ex3');
-    var btnBuySaw = document.getElementById('btn-buy_x5F_saw');
-    var btnBuyEx4 = document.getElementById('btn-buy_x5F_ex4');
-    var btnBuyEx5 = document.getElementById('btn-buy_x5F_ex5');
-    var btnBuySaw2 = document.getElementById('btn-buy_x5F_saw2');
-    var btnBuyPick2 = document.getElementById('btn-buy_x5F_pick2');
-    var btnBuyPick3 = document.getElementById('btn-buy_x5F_pick3');
-    var btnBuyPerf = document.getElementById('btn-buy_x5F_perf');
-    var btnBuyPick4 = document.getElementById('btn-buy_x5F_pick4');
-    var btnBuyPick5 = document.getElementById('btn-buy_x5F_pick5');
-    var btnBuyPerf2 = document.getElementById('btn-buy_x5F_perf2');
 
     dealer.onclick = function () {
         menuDealer.style.display = 'block';
