@@ -115,7 +115,7 @@
         } else if(_item.classList.contains('arm-cliffs')){
             processingArmCliffsMenu(_itemId);
         } else if(_item.classList.contains('arm-sea')){
-            processingArmCliffsMenu(_itemId);
+            processingArmSeaMenu(_itemId);
         }
 
         setVisibilityArm(gameModel.char);
@@ -326,7 +326,7 @@
     }
 
     function getOptionsAnimation(arm) {
-        var _result, _rightArm, _leftArm, _firstRightArm, _firstLeftArm, _handle;
+        var _result, _rightArm, _leftArm, _firstRightArm, _firstLeftArm, _handleArm;
         switch (gameModel.activeLocation){
             case 'forest' : {
                 if(arm.indexOf('axe') !== -1){
@@ -529,7 +529,7 @@
                             _leftArm = {DOM: document.getElementById('left-arm_x5F_pump'), animationClass: 'left_arm_perf'};
                             _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_pump'), animationClass: 'first_right_arm_perf'};
                             _firstLeftArm = {DOM: document.getElementById('first-left-arm_1_'), animationClass: 'first_left_arm_perf'};
-                            _handle = {DOM: document.getElementById('handle'), animationClass: 'first_left_arm_perf'};
+                            _handleArm = {DOM: document.getElementById('handle'), animationClass: 'first_left_arm_perf'};
                             break;
                         }
 
@@ -538,7 +538,7 @@
                             _leftArm = {DOM: document.getElementById('left-arm_x5F_pump'), animationClass: 'left_arm_perf'};
                             _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_pump2'), animationClass: 'first_right_arm_perf'};
                             _firstLeftArm = {DOM: document.getElementById('first-left-arm_1_'), animationClass: 'first_left_arm_perf'};
-                            _handle = {DOM: document.getElementById('handle2'), animationClass: 'first_left_arm_perf'};
+                            _handleArm = {DOM: document.getElementById('handle2'), animationClass: 'first_left_arm_perf'};
                             break;
                         }
                     }
@@ -551,7 +551,7 @@
                         first_right_arm: _firstRightArm,
                         left_arm: _leftArm,
                         first_left_arm: _firstLeftArm,
-                        handle: _handle,
+                        handleArm: _handleArm,
                         delay: 2000
                     };
                 }
@@ -599,7 +599,9 @@
         options.first_right_arm.DOM.classList.add(options.first_right_arm.animationClass);
         options.left_arm.DOM.classList.add(options.left_arm.animationClass);
         options.first_left_arm.DOM.classList.add(options.first_left_arm.animationClass);
-        options.handle.DOM.classList.add(options.handle.animationClass);
+        if(options.handleArm){
+            options.handleArm.DOM.classList.add(options.handleArm.animationClass);
+        }
     }
 
     function gameAnimationCharLevel2Up(options){
@@ -611,7 +613,9 @@
         options.first_right_arm.DOM.classList.remove(options.first_right_arm.animationClass);
         options.left_arm.DOM.classList.remove(options.left_arm.animationClass);
         options.first_left_arm.DOM.classList.remove(options.first_left_arm.animationClass);
-        options.handle.DOM.classList.add(options.handle.animationClass);
+        if(options.handleArm) {
+            options.handleArm.DOM.classList.add(options.handleArm.animationClass);
+        }
     }
 
     function setBtnsIslandVisibility(){
@@ -778,31 +782,31 @@
     function processingArmSeaMenu(id){
         switch(id){
             case 'bucket-pick_x5F_bag' : {
-                gameModel.char.armCliffs = 'bucket_1';
+                gameModel.char.armSea = 'bucket_1';
                 break;
             }
             case 'bucket2-pick_x5F_bag' : {
-                gameModel.char.armCliffs = 'bucket_2';
+                gameModel.char.armSea = 'bucket_2';
                 break;
             }
             case 'bucket3-pick_x5F_bag' : {
-                gameModel.char.armCliffs = 'bucket_3';
+                gameModel.char.armSea = 'bucket_3';
                 break;
             }
             case 'bucket4-pick_x5F_bag' : {
-                gameModel.char.armCliffs = 'bucket_4';
+                gameModel.char.armSea = 'bucket_4';
                 break;
             }
             case 'bucket5-pick_x5F_bag' : {
-                gameModel.char.armCliffs = 'bucket_5';
+                gameModel.char.armSea = 'bucket_5';
                 break;
             }
             case 'pump-pick_x5F_bag' : {
-                gameModel.char.armCliffs = 'pump_1';
+                gameModel.char.armSea = 'pump_1';
                 break;
             }
             case 'pump2-pick_x5F_bag' : {
-                gameModel.char.armCliffs = 'pump_2';
+                gameModel.char.armSea = 'pump_2';
                 break;
             }
         }
