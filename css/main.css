@@ -340,6 +340,13 @@ body {
 	transform-origin: 48% 55%;
 	animation-fill-mode: forwards;
 }
+.saw {
+	animation-name: saw;
+	animation-duration: 2s;
+	transform-origin: 48% 55%;
+	animation-fill-mode: forwards;
+}
+
 
 
 @keyframes pupils_saw {
@@ -363,6 +370,10 @@ body {
 	}
 }
 @keyframes first_left_arm_saw {
+	70%, 100% {
+		transform: rotate(7deg);
+	}
+@keyframes saw {
 	70%, 100% {
 		transform: rotate(7deg);
 	}
@@ -393,6 +404,13 @@ body {
 	transform-origin: 45% 56.5%;
 	animation-fill-mode: forwards;
 }
+.perf {
+	animation-name: perf;
+	animation-duration: 2s;
+	transform-origin: 45% 56.5%;
+	animation-fill-mode: forwards;
+}
+
 
 @keyframes right_arm_perf {
 	70%, 100% {
@@ -410,6 +428,10 @@ body {
 	}
 }
 @keyframes first_left_arm_perf {
+	70%, 100% {
+		transform: rotate(-28deg);
+	}
+@keyframes perf {
 	70%, 100% {
 		transform: rotate(-28deg);
 	}
@@ -436,6 +458,16 @@ body {
 	animation-duration: 2s;
 	transform-origin: 55% 56%;
 }
+.bucket_handle {
+	animation-name: bucket_handle;
+	animation-duration: 2s;
+	transform-origin: 55% 56%;
+}
+.bucket {
+	animation-name: bucket;
+	animation-duration: 2s;
+	transform-origin: 55% 56%;
+}
 
 @keyframes right_arm_bucket {
 	70%, 100% {
@@ -456,7 +488,16 @@ body {
 	70%, 100% {
 		transform: rotate(-28deg);
 	}
+@keyframes bucket_handle {
+	70%, 100% {
+		transform: rotate(-28deg);
+	}
+@keyframes bucket {
+	70%, 100% {
+		transform: rotate(-28deg);
+	}
 }
+
 /*Анимация с насосами*/
 .right_arm_pump {
 	animation-name: right_arm_pump;
@@ -482,7 +523,7 @@ body {
 	transform-origin: 45% 56.5%;
 	animation-fill-mode: forwards;
 }
-.handle {
+.handle_pump {
 	animation-name: hundle_pump;
 	animation-duration: 2s;
 	animation-fill-mode: forwards;
