@@ -135,10 +135,10 @@ body {
 #game-menu-dealer,
 #game-menu-char,
 .char-hand-part,
-/*чар в лесу*/
 #mouthsmile_1_,
-/*чар в скалах*/
-#mouthsmile_3_ {
+#mouthsmile_2_,
+#mouthsmile_3_,
+#charackter_x5F_sea polygon.st242{
 	display: none;
 }
 #game-menu-char {
@@ -164,12 +164,16 @@ body {
 }
 #game-char-sea{
 	left:21%;
-	top:1%;
 }
 #game-dealer {
 	left: 12%;
 }
-
+/*
+* отражение
+*/
+.reflection{
+    transform: scale(-1, 1);
+}
 /*
 * media query
 */
@@ -342,9 +346,10 @@ body {
 }
 .saw {
 	animation-name: saw;
-	animation-duration: 2s;
+	animation-duration: .5s;
 	transform-origin: 48% 55%;
 	animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
 }
 
 
@@ -370,12 +375,16 @@ body {
 	}
 }
 @keyframes first_left_arm_saw {
-	70%, 100% {
-		transform: rotate(7deg);
-	}
+    70%, 100% {
+        transform: rotate(7deg);
+    }
+}
 @keyframes saw {
-	70%, 100% {
-		transform: rotate(7deg);
+	50% {
+		transform: rotate(1deg);
+	}
+    100% {
+		transform: rotate(-1deg);
 	}
 }
 
@@ -406,9 +415,10 @@ body {
 }
 .perf {
 	animation-name: perf;
-	animation-duration: 2s;
+	animation-duration: .5s;
 	transform-origin: 45% 56.5%;
 	animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
 }
 
 
@@ -419,7 +429,7 @@ body {
 }
 @keyframes first_right_arm_perf {
 	70%, 100% {
-		transform: rotate(65deg);
+		transform: rotate(80deg);
 	}
 }
 @keyframes left_arm_perf {
@@ -428,13 +438,17 @@ body {
 	}
 }
 @keyframes first_left_arm_perf {
-	70%, 100% {
-		transform: rotate(-28deg);
-	}
+    70%, 100% {
+        transform: rotate(-28deg);
+    }
+}
 @keyframes perf {
-	70%, 100% {
-		transform: rotate(-28deg);
-	}
+	50% {
+        transform: translate(0.5%, 0);
+    }
+    100% {
+        transform: translate(-0.5%, 0);
+    }
 }
 
 /*Анимация с ведрами*/
@@ -446,7 +460,7 @@ body {
 .first_right_arm_bucket {
 	animation-name: first_right_arm_bucket;
 	animation-duration: 2s;
-	transform-origin: 37% 57%;
+	transform-origin: 37% 59%;
 }
 .left_arm_bucket {
 	animation-name: left_arm_bucket;
@@ -456,45 +470,47 @@ body {
 .first_left_arm_bucket {
 	animation-name: first_left_arm_bucket;
 	animation-duration: 2s;
-	transform-origin: 55% 56%;
+	transform-origin: 55% 57%;
 }
 .bucket_handle {
 	animation-name: bucket_handle;
 	animation-duration: 2s;
-	transform-origin: 55% 56%;
+	transform-origin: 50% 59%;
 }
 .bucket {
 	animation-name: bucket;
 	animation-duration: 2s;
-	transform-origin: 55% 56%;
+	transform-origin: 78% 69%;
 }
 
 @keyframes right_arm_bucket {
-	70%, 100% {
+	60% {
 		transform: rotate(-80deg);
 	}
 }
 @keyframes first_right_arm_bucket {
-	70%, 100% {
+	60% {
 		transform: rotate(65deg);
 	}
 }
 @keyframes left_arm_bucket {
-	70%, 100% {
+	60% {
 		transform: rotate(-16deg);
 	}
 }
 @keyframes first_left_arm_bucket {
-	70%, 100% {
-		transform: rotate(-28deg);
-	}
+    60% {
+        transform: rotate(-28deg);
+    }
+}
 @keyframes bucket_handle {
-	70%, 100% {
-		transform: rotate(-28deg);
-	}
+    60% {
+        transform: rotate(-20deg);
+    }
+}
 @keyframes bucket {
-	70%, 100% {
-		transform: rotate(-28deg);
+	60% {
+		transform: rotate(32deg);
 	}
 }
 

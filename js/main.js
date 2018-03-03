@@ -193,8 +193,10 @@
 
     var gameModel = {
         activeLocation: 'enterPage',
-        activeAnimation: null,
+        activeAnimationLevel1: null,
+        activeAnimationLevel2: null,
         timeOutAnimation: null,
+        timeOutAnimationForReflection: null,
         char: {
             armForest: null,
             armCliffs: null,
@@ -237,6 +239,7 @@
     var sea = document.getElementById('sea');
     var modalsea = document.querySelector('.game-modalsea');
     var gameCharSea = document.querySelector('#game-char-sea');
+    var seaPiece = document.querySelector('#charackter_x5F_sea polygon.st242'); //кусок озера, скрывающий черпак
     var water_extraction = document.getElementById('modalsea');
 
     var pier = document.getElementById('pier');
@@ -260,20 +263,29 @@
         //todo clear counters
     };
 
+    var _touchStartYBagMenu, _touchEndYBagMenu;
     menuBagItems.addEventListener('touchstart', function(evt){
-        var _item = findGElement(evt.target),
-            _itemId = _item.getAttribute('id');
+        _touchStartYBagMenu = evt.changedTouches[0].clientY;
+    });
 
-        if(_item.classList.contains('arm-forest')){
-            processingArmForestMenu(_itemId);
-        } else if(_item.classList.contains('arm-cliffs')){
-            processingArmCliffsMenu(_itemId);
-        } else if(_item.classList.contains('arm-sea')){
-            processingArmSeaMenu(_itemId);
+    menuBagItems.addEventListener('touchend', function(evt) {
+        _touchEndYBagMenu = evt.changedTouches[0].clientY;
+        var _diffPosition = Math.abs(_touchStartYBagMenu - _touchEndYBagMenu);
+        if(_diffPosition < 5){
+            var _item = findGElement(evt.target),
+                _itemId = _item.getAttribute('id');
+
+            if(_item.classList.contains('arm-forest')){
+                processingArmForestMenu(_itemId);
+            } else if(_item.classList.contains('arm-cliffs')){
+                processingArmCliffsMenu(_itemId);
+            } else if(_item.classList.contains('arm-sea')){
+                processingArmSeaMenu(_itemId);
+            }
+
+            setVisibilityArm(gameModel.char);
+            menuChar.classList.toggle('display-block');
         }
-
-        setVisibilityArm(gameModel.char);
-        menuChar.classList.toggle('display-block');
     });
 
     function startExitGame(action){
@@ -289,21 +301,26 @@
         setBtnsIslandVisibility();
         setLocationVisibility();
         //stop animation
-        if(gameModel.activeAnimation){
-            gameModel.activeAnimation.pupils.classList.toggle('pupils');
-            gameModel.activeAnimation.mouthsmile.classList.toggle('display-block');
-            gameModel.activeAnimation.mouth.classList.toggle('display-block');
+        if(gameModel.activeAnimationLevel1){
+            gameModel.activeAnimationLevel1.pupils.classList.toggle('pupils');
+            gameModel.activeAnimationLevel1.mouthsmile.classList.toggle('display-block');
+            gameModel.activeAnimationLevel1.mouth.classList.toggle('display-block');
 
-            gameModel.activeAnimation.right_arm.DOM.classList.toggle(gameModel.activeAnimation.right_arm.animationClass);
-            gameModel.activeAnimation.first_right_arm.DOM.classList.toggle(gameModel.activeAnimation.first_right_arm.animationClass);
-            gameModel.activeAnimation.left_arm.DOM.classList.toggle(gameModel.activeAnimation.left_arm.animationClass);
-            gameModel.activeAnimation.first_left_arm.DOM.classList.toggle(gameModel.activeAnimation.first_left_arm.animationClass);
-            gameModel.activeAnimation.saw.toggle(gameModel.activeAnimation.saw.animationClass);
-            gameModel.activeAnimation.perf.toggle(gameModel.activeAnimation.perf.animationClass);
-            gameModel.activeAnimation.bucket.toggle(gameModel.activeAnimation.bucket.animationClass);
-            gameModel.activeAnimation.bucketWithHandle.toggle(gameModel.activeAnimation.bucketWithHandle.animationClass);
-            gameModel.activeAnimation.handleArm.toggle(gameModel.activeAnimation.handleArm.animationClass);
-            gameModel.activeAnimation = null;
+            gameModel.activeAnimationLevel1.right_arm.DOM.classList.toggle(gameModel.activeAnimationLevel1.right_arm.animationClass);
+            gameModel.activeAnimationLevel1.first_right_arm.DOM.classList.toggle(gameModel.activeAnimationLevel1.first_right_arm.animationClass);
+            gameModel.activeAnimationLevel1.left_arm.DOM.classList.toggle(gameModel.activeAnimationLevel1.left_arm.animationClass);
+            gameModel.activeAnimationLevel1.first_left_arm.DOM.classList.toggle(gameModel.activeAnimationLevel1.first_left_arm.animationClass);
+
+            if(gameModel.activeLocation === 'sea'){
+                gameModel.activeAnimationLevel1.bucket.DOM.classList.toggle(gameModel.activeAnimationLevel1.bucket.animationClass);
+                gameModel.activeAnimationLevel1.bucketWithHandle.DOM.classList.toggle(gameModel.activeAnimationLevel1.bucketWithHandle.animationClass);
+                gameCharSea.classList.remove('reflection');
+                if(!seaPiece.classList.contains('display-block')){
+                    seaPiece.classList.add('display-block');
+                }
+                clearTimeout(gameModel.timeOutAnimationForReflection);
+            }
+            gameModel.activeAnimationLevel1 = null;
             clearTimeout(gameModel.timeOutAnimation);
         }
         gameModel.activeLocation = LOCATION.island;
@@ -380,7 +397,7 @@
              case 'sea' : {
                 if(gameModel.char.armSea.indexOf('bucket') !== -1){
                     gameAnimationCharLevel1(options);
-                } else if(gameModel.char.armSea.indexOf('pupm') !== -1){
+                } else if(gameModel.char.armSea.indexOf('pump') !== -1){
                     gameAnimationCharLevel2Down(options);
                 }
                 break;
@@ -413,7 +430,7 @@
             case 'sea' : {
                 if(gameModel.char.armSea.indexOf('bucket') !== -1){
                    
-                } else if(gameModel.char.armSea.indexOf('pupm') !== -1){
+                } else if(gameModel.char.armSea.indexOf('pump') !== -1){
                     gameAnimationCharLevel2Up(options);
                 }
                 break;
@@ -702,8 +719,8 @@
     }
 
     function gameAnimationCharLevel1(options) {
-        if(!gameModel.activeAnimation){
-            gameModel.activeAnimation = options;
+        if(!gameModel.activeAnimationLevel1){
+            gameModel.activeAnimationLevel1 = options;
 
             options.pupils.classList.toggle('pupils');
             options.mouthsmile.classList.toggle('display-block');
@@ -713,15 +730,19 @@
             options.first_right_arm.DOM.classList.toggle(options.first_right_arm.animationClass);
             options.left_arm.DOM.classList.toggle(options.left_arm.animationClass);
             options.first_left_arm.DOM.classList.toggle(options.first_left_arm.animationClass);
-           // if (options.bucketWithHandle) {
-            options.bucketWithHandle.DOM.classList.toggle(options.bucketWithHandle.animationClass);
-       // };
-            //if (options.bucket) {
-            options.bucket.DOM.classList.toggle(options.bucket.animationClass);
-       // };
+
+            if (options.bucketWithHandle) {
+                options.bucketWithHandle.DOM.classList.toggle(options.bucketWithHandle.animationClass);
+                options.bucket.DOM.classList.toggle(options.bucket.animationClass);
+
+                gameModel.timeOutAnimationForReflection = setTimeout(function() {
+                    gameCharSea.classList.toggle('reflection');
+                    seaPiece.classList.toggle('display-block');
+                }, options.delay/2);
+            }
 
             gameModel.timeOutAnimation = setTimeout(function(){
-                gameModel.activeAnimation = null;
+                gameModel.activeAnimationLevel1 = null;
 
                 options.pupils.classList.toggle('pupils');
                 options.mouthsmile.classList.toggle('display-block');
@@ -731,17 +752,19 @@
                 options.first_right_arm.DOM.classList.toggle(options.first_right_arm.animationClass);
                 options.left_arm.DOM.classList.toggle(options.left_arm.animationClass);
                 options.first_left_arm.DOM.classList.toggle(options.first_left_arm.animationClass);
-               // if (options.bucketWithHandle) {
-                options.bucketWithHandle.DOM.classList.toggle(options.bucketWithHandle.animationClass);
-           // };
-               // if (options.bucket) {
-                options.bucket.DOM.classList.toggle(options.bucket.animationClass);
-           // };
+
+                if (options.bucketWithHandle) {
+                    options.bucketWithHandle.DOM.classList.toggle(options.bucketWithHandle.animationClass);
+                    options.bucket.DOM.classList.toggle(options.bucket.animationClass);
+                    gameCharSea.classList.toggle('reflection');
+                    seaPiece.classList.toggle('display-block');
+                }
             }, options.delay);
         }
     }
 
     function gameAnimationCharLevel2Down(options){
+        gameModel.activeAnimationLevel2 = options;
         options.pupils.classList.add('pupils_saw');
         options.mouthsmile.classList.add('display-block');
         options.mouth.classList.add('display-block');
@@ -750,18 +773,25 @@
         options.first_right_arm.DOM.classList.add(options.first_right_arm.animationClass);
         options.left_arm.DOM.classList.add(options.left_arm.animationClass);
         options.first_left_arm.DOM.classList.add(options.first_left_arm.animationClass);
-        if(options.handleArm){
-            options.handleArm.DOM.classList.add(options.handleArm.animationClass);
-        };
-       // if (options.perf) {
-            options.perf.DOM.classList.add(options.perf.animationClass);
-       // };
-       // if (options.saw) {
-            options.saw.DOM.classList.add(options.saw.animationClass);
-       // };
+
+        if(gameModel.timeOutAnimation){
+            clearTimeout(gameModel.timeOutAnimation);
+        }
+        gameModel.timeOutAnimation = setTimeout(function() {
+            if (gameModel.activeLocation === 'sea') {
+                options.handleArm.DOM.classList.add(options.handleArm.animationClass);
+            }
+            if (gameModel.activeLocation === 'cliffs') {
+                options.perf.DOM.classList.add(options.perf.animationClass);
+            }
+            if (gameModel.activeLocation === 'forest') {
+                options.saw.DOM.classList.add(options.saw.animationClass);
+            }
+        }, options.delay);
     }
 
     function gameAnimationCharLevel2Up(options){
+        gameModel.activeAnimationLevel2 = null;
         options.pupils.classList.remove('pupils_saw');
         options.mouthsmile.classList.remove('display-block');
         options.mouth.classList.remove('display-block');
@@ -770,15 +800,16 @@
         options.first_right_arm.DOM.classList.remove(options.first_right_arm.animationClass);
         options.left_arm.DOM.classList.remove(options.left_arm.animationClass);
         options.first_left_arm.DOM.classList.remove(options.first_left_arm.animationClass);
-        if(options.handleArm) {
-            options.handleArm.DOM.classList.add(options.handleArm.animationClass);
-        };
-        //if (options.perf) {
-            options.perf.DOM.classList.add(options.perf.animationClass);
-       // };
-       // if (options.saw) {
-            options.saw.DOM.classList.add(options.saw.animationClass);
-       // };
+
+        if(gameModel.activeLocation === 'sea'){
+            options.handleArm.DOM.classList.remove(options.handleArm.animationClass);
+        }
+        if (gameModel.activeLocation === 'cliffs') {
+            options.perf.DOM.classList.remove(options.perf.animationClass);
+        }
+        if (gameModel.activeLocation === 'forest') {
+            options.saw.DOM.classList.remove(options.saw.animationClass);
+        }
     }
 
     function setBtnsIslandVisibility(){
