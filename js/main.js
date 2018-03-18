@@ -35,18 +35,25 @@
     var btnBuyEx4 = document.getElementById('btn-buy_x5F_ex4');
     var btnBuyEx5 = document.getElementById('btn-buy_x5F_ex5');
     var btnBuySaw2 = document.getElementById('btn-buy_x5F_saw2');
+
     var btnBuyPick2 = document.getElementById('btn-buy_x5F_pick2');
     var btnBuyPick3 = document.getElementById('btn-buy_x5F_pick3');
     var btnBuyPerf = document.getElementById('btn-buy_x5F_perf');
     var btnBuyPick4 = document.getElementById('btn-buy_x5F_pick4');
     var btnBuyPick5 = document.getElementById('btn-buy_x5F_pick5');
     var btnBuyPerf2 = document.getElementById('btn-buy_x5F_perf2');
+
     var btnBuyBucket2 = document.getElementById('btn-buy_x5F_bucket2');
     var btnBuyBucket3 = document.getElementById('btn-buy_x5F_bucket3');
     var btnBuyPump = document.getElementById('btn-buy_x5F_pump');
     var btnBuyBucket4 = document.getElementById('btn-buy_x5F_bucket4');
     var btnBuyBucket5 = document.getElementById('btn-buy_x5F_bucket5');
     var btnBuyPump2 = document.getElementById('btn-buy_x5F_pump2');
+
+    var btnBuyShovel2 = document.getElementById('btn-buy_x5F_shovel2');
+    var btnBuyShovel3 = document.getElementById('btn-buy_x5F_shovel3');
+    var btnBuyShovel4 = document.getElementById('btn-buy_x5F_shovel4');
+    var btnBuyShovel5 = document.getElementById('btn-buy_x5F_shovel5');
 
  МЕНЮ ПЕРСОНАЖА
 
@@ -67,7 +74,15 @@
     var statusPointInt = document.getElementById('quantity-status_x5F_int'); - количество интелекта, влияет на возможность использования инструмента второго уровня
 
         Сумка с инструментом ( инструмент появляется в сумке только после покупки у торговца, для использования инструмента необходимо иметь определенное количество статов для каждого инструмента)
-        
+    
+    id="shovel6-pick_x5F_bag"
+    id="shovel5-pick_x5F_bag"
+    id="shovel4-pick_x5F_bag"
+    id="shovel3-pick_x5F_bag"
+    id="shovel2-pick_x5F_bag"
+    id="shovel-pick_x5F_bag"
+    
+    id="bucket6-pick_x5F_bag"
     id="pump2-pick_x5F_bag"
     id="bucket5-pick_x5F_bag"
     id="bucket4-pick_x5F_bag"
@@ -76,6 +91,7 @@
     id="bucket2-pick_x5F_bag"
     id="bucket-pick_x5F_bag"
 
+    id="pick6-pick_x5F_bag"
     id="perf2-pick_x5F_bag"
     id="pick5-pick_x5F_bag"
     id="pick4-pick_x5F_bag"
@@ -84,6 +100,7 @@
     id="pick2-pick_x5F_bag"
     id="pick-pick_x5F_bag"
 
+    id="ex6-pick_x5F_bag"  
     id="saw2-pick_x5F_bag"
     id="ex5-pick_x5F_bag"
     id="ex4-pick_x5F_bag"
@@ -92,12 +109,26 @@
     id="ex2-pick_x5F_bag"
     id="ex-pick_x5F_bag"
 
-УДАЛЯЕМЫЕ ДЕРЕВЬЯ, СКАЛЫ, ОЗЕРО
+УДАЛЯЕМЫЕ ДЕРЕВЬЯ, ТРАВА, СКАЛЫ, ОЗЕРО, ОСТРОВ
     
         Деревья 
     
     id="forest" - общая группа деревьев
     id="tree1" по id="tree488" - удаляются по очереди
+
+        Трава (трава удаляется по мере удаления деревьев, нужно подобрать)
+    
+    id="grass" - общая группа травы
+        Порядок удаления:
+    id="grass1_1_"
+    id="grass2_1_"
+    id="grass3_2_"
+    id="grass4_1_"
+    id="grass5_1_"
+    id="grass6_1_"
+    id="grass7_1_"
+    id="grass8_1_"
+    id="grass9"
 
         Скалы
 
@@ -149,7 +180,35 @@
     id="sea9"
     id="sea10"
     id="sea11"
+        
+        Земля
 
+    id="earth" - общая группа земли
+        Порядок удаления:
+    id="earth1"
+    id="earth2_1_"
+    id="earth3_1_"
+    id="earth4_1_"
+    id="earth5_1_"
+    id="earth6_1_"
+    id="earth7_1_"
+    id="earth8_1_"
+    id="earth9_1_"
+    id="earth10_1_"
+    id="earth11_1_"
+    id="earth12_1_"
+    id="earth13_1_"
+    id="earth14_1_"
+    id="earth15_1_"
+    id="earth16_1_"
+    id="earth17_1_"
+    id="earth18_1_"
+    id="earth19_1_"
+    id="earth20_1_"
+    id="earth21_1_"
+    id="earth22_1_"
+    id="earth23"
+    
 */
 
 (function(appMethods){
@@ -159,6 +218,7 @@
         forest: 'forest',
         cliffs: 'cliffs',
         sea: 'sea',
+        earth: 'earth',
         pier: 'pier'
     };
 
@@ -167,7 +227,8 @@
         'axe_2': ['right-arm_x5F_ex', 'left-arm_3_', 'first-left-arm_3_', 'first-right-arm_x5F_ex2'],
         'axe_3': ['right-arm_x5F_ex', 'left-arm_3_', 'first-left-arm_3_', 'first-right-arm_x5F_ex3'],
         'axe_4': ['right-arm_x5F_ex', 'left-arm_3_', 'first-left-arm_3_', 'first-right-arm_x5F_ex4'],
-        'axe_5': ['right-arm_x5F_ex', 'left-arm_3_', 'first-left-arm_3_', 'first-right-arm_x5F_ex5'],
+        'axe_5': ['right-arm_x5F_ex', 'left-arm_3_', 'first-left-arm_3_', 'first-right-arm_x5F_ex5_1_'],
+        'axe_6': ['right-arm_x5F_ex', 'left-arm_3_', 'first-left-arm_3_', 'first-right-arm_x5F_ex6'],
 
         'saw_1': ['right-arm_x5F_saw', 'left-arm_x5F_saw', 'first-right-arm_x5F_saw', 'first-left-arm_2_', 'chainsaw'],
         'saw_2': ['right-arm_x5F_saw2', 'left-arm_x5F_saw2', 'first-right-arm_x5F_saw2', 'first-left-arm_7_', 'saw2'],
@@ -176,7 +237,8 @@
         'pick_2': ['right-armpick_1_', 'left-arm_2_', 'first-left-arm_4_', 'first-right-arm_x5F_pick2'],
         'pick_3': ['right-armpick_1_', 'left-arm_2_', 'first-left-arm_4_', 'first-right-arm_x5F_pick3'],
         'pick_4': ['right-armpick_1_', 'left-arm_2_', 'first-left-arm_4_', 'first-right-arm_x5F_pick4_1_'],
-        'pick_5': ['right-armpick_1_', 'left-arm_2_', 'first-left-arm_4_', 'first-right-arm_x5F_pick5'],
+        'pick_5': ['right-armpick_1_', 'left-arm_2_', 'first-left-arm_4_', 'first-right-arm_x5F_pick5_1_'],
+        'pick_6': ['right-armpick_1_', 'left-arm_2_', 'first-left-arm_4_', 'first-right-arm_x5F_pick6'],
 
         'perf_1': ['right-arm_x5F_perf', 'left-arm_x5F_perf', 'first-right-arm_x5F_perf', 'first-left-arm_5_', 'perf'],
         'perf_2': ['right-arm_x5F_perf2', 'left-arm_x5F_perf2', 'first-right-arm_x5F_perf2', 'first-left-arm_6_', 'perf2'],
@@ -185,10 +247,18 @@
         'bucket_2': ['right-arm_x5F_bucket_1_', 'left-arm_4_', 'first-right-arm_x5F_bucket2_2_', 'first-left-arm_8_', 'bucket_x5F_2_1_', 'bucket2_1_'],
         'bucket_3': ['right-arm_x5F_bucket_1_', 'left-arm_4_', 'first-right-arm_x5F_bucket3_1_', 'first-left-arm_8_', 'bucket_x5F_3_1_', 'bucket3_1_'],
         'bucket_4': ['right-arm_x5F_bucket_1_', 'left-arm_4_', 'first-right-arm_x5F_bucket4', 'first-left-arm_8_', 'bucket_x5F_4', 'bucket3_2_'],
-        'bucket_5': ['right-arm_x5F_bucket_1_', 'left-arm_4_', 'first-right-arm_x5F_bucket5', 'first-left-arm_8_', 'bucket_x5F_5', 'bucket3_3_'],
+        'bucket_5': ['right-arm_x5F_bucket_1_', 'left-arm_4_', 'first-right-arm_x5F_bucket5_1_', 'first-left-arm_8_', 'bucket_x5F_5_1_', 'bucket3_4_'],
+        'bucket_6': ['right-arm_x5F_bucket_1_', 'left-arm_4_', 'first-right-arm_x5F_bucket6', 'first-left-arm_8_', 'bucket_x5F_6', 'bucket6'],
 
         'pump_1': ['right-arm_x5F_pump', 'left-arm_x5F_pump', 'first-right-arm_x5F_pump', 'first-left-arm_1_', 'handle'],
-        'pump_2': ['right-arm_x5F_pump2', 'left-arm_x5F_pump', 'first-right-arm_x5F_pump2', 'first-left-arm_1_', 'handle2']
+        'pump_2': ['right-arm_x5F_pump2', 'left-arm_x5F_pump', 'first-right-arm_x5F_pump2', 'first-left-arm_1_', 'handle2'],
+
+        'shovel_1': ['right-arm_x5F_shovel', 'left-arm_5_', 'first-right-arm_x5F_shovel1', 'first-left-arm_8_', 'bucket_x5F_1_2_', 'bucket1_1_'],
+        'shovel_2': ['right-arm_x5F_shovel', 'left-arm_5_', 'first-right-arm_x5F_shovel2_2_', 'first-left-arm_8_', 'bucket_x5F_2_1_', 'bucket2_1_'],
+        'shovel_3': ['right-arm_x5F_shovel', 'left-arm_5_', 'first-right-arm_x5F_shovel3_2_', 'first-left-arm_8_', 'bucket_x5F_3_1_', 'bucket3_1_'],
+        'shovel_4': ['right-arm_x5F_shovel', 'left-arm_5_', 'first-right-arm_x5F_shovel4_1_', 'first-left-arm_8_', 'bucket_x5F_4', 'bucket3_2_'],
+        'shovel_5': ['right-arm_x5F_shovel', 'left-arm_5_', 'first-right-arm_x5F_shovel5_1_', 'first-left-arm_8_', 'bucket_x5F_5', 'bucket3_3_'],
+        'shovel_6': ['right-arm_x5F_shovel', 'left-arm_5_', 'first-right-arm_x5F_shovel6', 'first-left-arm_8_', 'bucket_x5F_5', 'bucket3_3_']
     };
 
     var gameModel = {
@@ -201,6 +271,7 @@
             armForest: null,
             armCliffs: null,
             armSea: null,
+            armEarth: null,
             strength: 0,
             intelligence: 0,
             agi: 0,
@@ -208,13 +279,17 @@
             allWoods: 0,
             rocks: 0,
             allRocks: 0,
+            water: 0,
+            allWater: 0,
+            earth: 0,
+            allEarth: 0,
             money: 0
         },
         eventStartHandler: null,
         eventEndHandler: null
     };
 
-    var startGameBtn = document.getElementById('loadwindow__start');
+    var startGameBtn = document.getElementById('btn_x5F_newgame');
     var exitBtn = document.getElementById('exit');
     var backBtn = document.getElementById('back');
     var charBtn = document.getElementById('char');
@@ -239,8 +314,14 @@
     var sea = document.getElementById('sea');
     var modalsea = document.querySelector('.game-modalsea');
     var gameCharSea = document.querySelector('#game-char-sea');
-    var seaPiece = document.querySelector('#charackter_x5F_sea polygon.st242'); //кусок озера, скрывающий черпак
+    var seaPiece = document.querySelector('#piece-sea'); //кусок озера, скрывающий черпак
     var water_extraction = document.getElementById('modalsea');
+
+    var earth = document.getElementById('earth');
+    var modalearth = document.querySelector('.game-modalearth');
+    var gameCharEarth = document.querySelector('#game-char-earth');
+    var earthPiece = document.querySelector('#piece-earth'); //кусок озера, скрывающий черпак
+    var earth_extraction = document.getElementById('modalearth');
 
     var pier = document.getElementById('pier');
     var modalpier = document.querySelector('.game-modalpier');
@@ -280,6 +361,8 @@
             } else if(_item.classList.contains('arm-cliffs')){
                 processingArmCliffsMenu(_itemId);
             } else if(_item.classList.contains('arm-sea')){
+                processingArmSeaMenu(_itemId);
+            } else if(_item.classList.contains('arm-earth')){
                 processingArmSeaMenu(_itemId);
             }
 
@@ -352,10 +435,21 @@
         var options = getOptionsAnimation(gameModel.char.armSea);
         setListeners(gameCharSea, options);
     };
+    // земля
+    earth.onclick = function () {
+        gameModel.activeLocation = LOCATION.earth;
+        setBtnsIslandVisibility();
+        setLocationVisibility();
+
+        var options = getOptionsAnimation(gameModel.char.armEarth);
+        setListeners(gameCharEarth, options);
+    };
     //причал
     var dealer = document.getElementById('game-dealer');
     var menuDealer = document.getElementById('game-menu-dealer');
     var closeMenuDealer = document.getElementById('btn-close_x5F_menu_1_');
+    var premiumMenuBtn = document.getElementById('btn-premium_x5F_menu');
+    var shopMenu = document.getElementById('menu_x5F_shop');
 
     pier.onclick = function () {
         gameModel.activeLocation = LOCATION.pier;
@@ -369,6 +463,10 @@
     closeMenuDealer.onclick = function () {
         menuDealer.style.display = 'none';
     };
+    premiumMenuBtn.onclick = function () {
+        shopMenu.classList.toggle('display-none');
+    }
+
 
     // меню персонажа
     charBtn.onclick = function () {
@@ -394,11 +492,17 @@
                 }
                 break;
             }
-             case 'sea' : {
+            case 'sea' : {
                 if(gameModel.char.armSea.indexOf('bucket') !== -1){
                     gameAnimationCharLevel1(options);
                 } else if(gameModel.char.armSea.indexOf('pump') !== -1){
                     gameAnimationCharLevel2Down(options);
+                }
+                break;
+            }
+            case 'earth' : {
+                if(gameModel.char.armEarth.indexOf('shovel') !== -1){
+                    gameAnimationCharLevel1(options);
                 }
                 break;
             }
@@ -435,6 +539,12 @@
                 }
                 break;
             }
+            case 'earth' : {
+                if(gameModel.char.armEarth.indexOf('shovel') !== -1){
+                   
+                }
+                break;
+            }
             case 'pier' : {
 
                 break;
@@ -464,7 +574,7 @@
     }
 
     function getOptionsAnimation(arm) {
-        var _result, _rightArm, _leftArm, _firstRightArm, _firstLeftArm, _handleArm, _saw, _perf, _bucketWithHandle, _bucket;
+        var _result, _rightArm, _leftArm, _firstRightArm, _firstLeftArm, _handleArm, _saw, _perf, _bucketWithHandle, _bucket, _pile;
         switch (gameModel.activeLocation){
             case 'forest' : {
                 if(arm.indexOf('axe') !== -1){
@@ -490,7 +600,12 @@
                         }
 
                         case 'axe_5': {
-                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_ex5'), animationClass: 'first_right_armex'};
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_ex5_1_'), animationClass: 'first_right_armex'};
+                            break;
+                        }
+
+                        case 'axe_6': {
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_ex6'), animationClass: 'first_right_armex'};
                             break;
                         }
                     }
@@ -569,7 +684,12 @@
                         }
 
                         case 'pick_5': {
-                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_pick5'), animationClass: 'first_right_armex'};
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_pick5_1_'), animationClass: 'first_right_armex'};
+                            break;
+                        }
+
+                        case 'pick_6': {
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_pick6'), animationClass: 'first_right_armex'};
                             break;
                         }
                     }
@@ -655,9 +775,16 @@
                         }
 
                         case 'bucket_5': {
-                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_bucket5'), animationClass: 'first_right_arm_bucket'};
-                            _bucketWithHandle = {DOM: document.getElementById('bucket_x5F_5'), animationClass: 'bucket_handle'};
-                            _bucket = {DOM: document.getElementById('bucket3_3_'), animationClass: 'bucket'};
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_bucket5_1_'), animationClass: 'first_right_arm_bucket'};
+                            _bucketWithHandle = {DOM: document.getElementById('bucket_x5F_5_1_'), animationClass: 'bucket_handle'};
+                            _bucket = {DOM: document.getElementById('bucket3_4_'), animationClass: 'bucket'};
+                            break;
+                        }
+
+                        case 'bucket_6': {
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_bucket6'), animationClass: 'first_right_arm_bucket'};
+                            _bucketWithHandle = {DOM: document.getElementById('bucket_x5F_6'), animationClass: 'bucket_handle'};
+                            _bucket = {DOM: document.getElementById('bucket6'), animationClass: 'bucket'};
                             break;
                         }
                     }
@@ -708,6 +835,63 @@
                         left_arm: _leftArm,
                         first_left_arm: _firstLeftArm,
                         handleArm: _handleArm,
+                        delay: 2000
+                    };
+                }
+                break;
+            }
+             case 'earth' : {
+                if(gameModel.char.armEarth.indexOf('shovel') !== -1){
+                    switch (arm){
+                        case 'shovel_1': {
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_shovel1'), animationClass: 'first_right_arm_shovel'};
+                            _pile = {DOM: document.getElementById('pile1'), animationClass: 'pile'};
+                            break;
+                        }
+
+                        case 'shovel_2': {
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_shovel2_2_'), animationClass: 'first_right_arm_shovel'};
+                            _pile = {DOM: document.getElementById('pile2'), animationClass: 'pile'};
+                            break;
+                        }
+
+                        case 'shovel_3': {
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_shovel3_2_'), animationClass: 'first_right_arm_shovel'};
+                            _pile = {DOM: document.getElementById('pile3'), animationClass: 'pile'};
+                            break;
+                        }
+
+                        case 'shovel_4': {
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_shovel4_1_'), animationClass: 'first_right_arm_shovel'};
+                            _pile = {DOM: document.getElementById('pile4'), animationClass: 'pile'};
+                            break;
+                        }
+
+                        case 'shovel_5': {
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_shovel5_1_'), animationClass: 'first_right_arm_shovel'};
+                            _pile = {DOM: document.getElementById('pile5'), animationClass: 'pile'};
+                            break;
+                        }
+                        case 'shovel_6': {
+                            _firstRightArm = {DOM: document.getElementById('first-right-arm_x5F_shovel6'), animationClass: 'first_right_arm_shovel'};
+                            _pile = {DOM: document.getElementById('pile6'), animationClass: 'pile'};
+                            break;
+                        }
+                    }
+
+                    _leftArm = {DOM: document.getElementById('left-arm_5_'), animationClass: 'left_arm_shovel'};
+                    _rightArm = {DOM: document.getElementById('right-arm_x5F_shovel'), animationClass: 'right_arm_shovel'};
+                    _firstLeftArm = {DOM: document.getElementById('first-left-arm_11_'), animationClass: 'first_left_arm_shovel'};
+
+                    _result = {
+                        pupils: document.getElementById('pupils_5_'),
+                        mouthsmile: document.getElementById('mouthsmile_5_'),
+                        mouth: document.getElementById('mouth_3_'),
+                        right_arm: _rightArm,
+                        first_right_arm: _firstRightArm,
+                        left_arm: _leftArm,
+                        first_left_arm: _firstLeftArm,
+                        pile: _pile,
                         delay: 2000
                     };
                 }
@@ -832,6 +1016,10 @@
                 modalsea.classList.toggle('display-block');
                 break;
             }
+            case 'earth' : {
+                modalearth.classList.toggle('display-block');
+                break;
+            }
             case 'pier' : {
                 modalpier.classList.toggle('display-block');
                 break;
@@ -853,6 +1041,10 @@
                 removeListeners(gameCharSea);
                 break;
             }
+            case 'earth' : {
+                removeListeners(gameCharEarth);
+                break;
+            }
             case 'pier' : {
 
                 break;
@@ -867,6 +1059,7 @@
             gameModel.char.armForest = 'axe_1';
             gameModel.char.armCliffs = 'pick_1';
             gameModel.char.armSea = 'bucket_1';
+            gameModel.char.armEarth = 'shovel_1';
             setVisibilityArm(gameModel.char);
         }
     }
@@ -881,6 +1074,9 @@
             document.getElementById(id).classList.toggle('display-block');
         });
         ARMS_IDS[char.armSea].forEach(function(id){
+            document.getElementById(id).classList.toggle('display-block');
+        });
+        ARMS_IDS[char.armEarth].forEach(function(id){
             document.getElementById(id).classList.toggle('display-block');
         });
 
@@ -898,6 +1094,11 @@
             case 'sea' : {
                 var optionsAnimSea = getOptionsAnimation(gameModel.char.armSea);
                 setListeners(gameCharSea, optionsAnimSea);
+                break;
+            }
+            case 'earth' : {
+                var optionsAnimEarth = getOptionsAnimation(gameModel.char.armEarth);
+                setListeners(gameCharEarth, optionsAnimEarth);
                 break;
             }
             case 'pier' : {
@@ -927,6 +1128,10 @@
             }
             case 'ex5-pick_x5F_bag' : {
                 gameModel.char.armForest = 'axe_5';
+                break;
+            }
+            case 'ex6-pick_x5F_bag' : {
+                gameModel.char.armForest = 'axe_6';
                 break;
             }
             case 'saw-pick_x5F_bag' : {
@@ -962,6 +1167,10 @@
                 gameModel.char.armCliffs = 'pick_5';
                 break;
             }
+            case 'pick6-pick_x5F_bag' : {
+                gameModel.char.armCliffs = 'pick_6';
+                break;
+            }
             case 'perf-pick_x5F_bag' : {
                 gameModel.char.armCliffs = 'perf_1';
                 break;
@@ -995,12 +1204,45 @@
                 gameModel.char.armSea = 'bucket_5';
                 break;
             }
+            case 'bucket6-pick_x5F_bag' : {
+                gameModel.char.armSea = 'bucket_6';
+                break;
+            }
             case 'pump-pick_x5F_bag' : {
                 gameModel.char.armSea = 'pump_1';
                 break;
             }
             case 'pump2-pick_x5F_bag' : {
                 gameModel.char.armSea = 'pump_2';
+                break;
+            }
+        }
+    }
+
+    function processingArmEarthMenu(id){
+        switch(id){
+            case 'shovel-pick_x5F_bag' : {
+                gameModel.char.armSea = 'shovel_1';
+                break;
+            }
+            case 'shovel2-pick_x5F_bag' : {
+                gameModel.char.armSea = 'shovel_2';
+                break;
+            }
+            case 'shovel3-pick_x5F_bag' : {
+                gameModel.char.armSea = 'shovel_3';
+                break;
+            }
+            case 'shovel4-pick_x5F_bag' : {
+                gameModel.char.armSea = 'shovel_4';
+                break;
+            }
+            case 'shovel5-pick_x5F_bag' : {
+                gameModel.char.armSea = 'shovel_5';
+                break;
+            }
+            case 'shovel6-pick_x5F_bag' : {
+                gameModel.char.armSea = 'shovel_6';
                 break;
             }
         }
