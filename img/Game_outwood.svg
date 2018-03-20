@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="game" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+	 viewBox="0 0 200 168" enable-background="new 0 0 200 168" xml:space="preserve">
 <g id="outwood">
-	<circle fill="#EAAB6C" stroke="#EAAB6C" stroke-miterlimit="10" cx="63.593" cy="127.224" r="56.743"/>
-	<circle fill="none" stroke="#FFC088" stroke-miterlimit="10" cx="63.593" cy="127.224" r="40.999"/>
-	<circle fill="none" stroke="#FFC088" stroke-miterlimit="10" cx="63.593" cy="127.224" r="23.288"/>
-	<circle fill="#FFC088" stroke="#FFC088" stroke-miterlimit="10" cx="63.593" cy="127.224" r="9.512"/>
-	<path fill="#996531" d="M40.167,75.527l111.066-57.165c2.974-1.531,6.27-2.329,9.615-2.329h6.351c3.262,0,6.479,0.759,9.396,2.218
+	<circle fill="#EAAB6C" stroke="#EAAB6C" stroke-miterlimit="10" cx="63.593" cy="111.224" r="56.743"/>
+	<circle fill="none" stroke="#FFC088" stroke-miterlimit="10" cx="63.593" cy="111.224" r="40.999"/>
+	<circle fill="none" stroke="#FFC088" stroke-miterlimit="10" cx="63.593" cy="111.224" r="23.288"/>
+	<circle fill="#FFC088" stroke="#FFC088" stroke-miterlimit="10" cx="63.593" cy="111.224" r="9.512"/>
+	<path fill="#996531" d="M40.167,59.527L151.234,2.362c2.974-1.531,6.27-2.329,9.615-2.329h6.351c3.262,0,6.479,0.759,9.396,2.218
 		l3.961,1.98c3.101,1.55,5.769,3.844,7.768,6.676l0.981,1.39c2.502,3.545,3.845,7.777,3.845,12.116v2.05
 		c0,4.56-1.483,8.995-4.226,12.638l-80.391,106.763l8.125-14.516l3.677-11.924l-0.281-13.867l-3.396-14.457l-6.199-11.868
-		L98.522,82.504L84.355,74.4L67.856,70.48l-13.859,0.812L40.167,75.527z"/>
+		L98.522,66.504L84.355,58.4L67.856,54.48l-13.859,0.812L40.167,59.527z"/>
 </g>
 </svg>

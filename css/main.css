@@ -70,14 +70,34 @@ body {
 /*
 *	main page
 */
+
+
 .counter-box{
-	position: absolute;
-	top: 0;
-	right: 10px;
+	position: relative;
+	top: 1%;
+	right: 1%;
 	width: 40%;
 	float: right;
-	margin-right: 10px;
-	margin-top: 1px;
+	margin-right: 0;
+	margin-top: 0;
+	padding-top: 2%;
+}
+
+.out {
+	
+}
+
+.imgs {
+	float: right;
+	width: 10%;
+}
+
+.counter {
+	float: right;
+	margin-right: 1%;
+	font-size: 16px;
+	color: #2F2F2F;
+	
 }
 
 .mainwindow {
@@ -107,24 +127,10 @@ body {
 	text-align: center;
 	text-transform: uppercase;
 	font-size: 20px;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	user-select: none;
 	padding: 5px 0;
 	background-color: #F3EC85;
 	border-radius: 5px;
 	color: #F3894C;
-}
-
-.counter {
-	font-size: 32px;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	user-select: none;
-	color: #F3894C;
-	text-align: right;
-	background: none;
-	border: none;
 }
 
 .game-island,
@@ -300,23 +306,23 @@ body {
 .right_armex {
 	animation-name: right_arm;
 	animation-duration: 2s;
-	transform-origin: 23% 50%;
+	transform-origin: 17% 50%;
 }
 .first_right_armex {
 	animation-name: first_right_arm;
 	animation-duration: 2s;
-	transform-origin: 35% 57%;
+	transform-origin: 24% 58%;
 }
 .left_armex {
 	animation-name: left_arm;
 	animation-duration: 2s;
-	transform-origin: 38% 49%;
+	transform-origin: 28% 49%;
 	animation-timing-function: ease-out;
 }
 .first_left_armex {
 	animation-name: first_left_arm;
 	animation-duration: 2s;
-	transform-origin: 47% 55%;
+	transform-origin: 35.1% 55%;
 	
 }
 
@@ -346,7 +352,7 @@ body {
 }
 @keyframes first_left_arm {
 	70% {
-		transform: rotate(-77deg);
+		transform: rotate(-82deg);
 	}
 }
 
@@ -388,8 +394,6 @@ body {
     animation-iteration-count: infinite;
 }
 
-
-
 @keyframes pupils_saw {
 	10%, 100% {
 		transform: translate(0.6%, 0.3%);
@@ -421,6 +425,253 @@ body {
 	}
     100% {
 		transform: rotate(-1deg);
+	}
+}
+
+/*Анимация кусков дерева*/
+#sliver1 {
+	display: none;
+	animation-name: sliver1;
+	animation-duration: 6s;
+	animation-fill-mode: forwards;
+}
+#sliver2 {
+	display: none;
+	animation-name: sliver10;
+	animation-duration: 6s;
+	animation-fill-mode: forwards;
+}
+#sliver3 {
+	display: none;
+	animation-name: sliver10;
+	animation-duration: 6s;
+	animation-fill-mode: forwards;
+}
+#sliver4 {
+	display: none;
+	animation-name: sliver10;
+	animation-duration: 6s;
+	animation-fill-mode: forwards;
+}
+#sliver5 {
+	display: none;
+	animation-name: sliver5;
+	animation-duration: 6s;
+	animation-fill-mode: forwards;
+}
+#sliver6 {
+	display: none;
+	animation-name: sliver10;
+	animation-duration: 6s;
+	animation-fill-mode: forwards;
+}
+#sliver7 {
+	display: none;
+	animation-name: sliver10;
+	animation-duration: 6s;
+	animation-fill-mode: forwards;
+}
+#sliver8 {
+	display: none;
+	animation-name: sliver10;
+	animation-duration: 6s;
+	animation-fill-mode: forwards;
+}
+#sliver9 {
+	display: none;
+	animation-name: sliver10;
+	animation-duration: 6s;
+	animation-fill-mode: forwards;
+}
+#sliver10 {
+	display: none;
+	animation-name: sliver10;
+	animation-duration: 6s;
+	animation-fill-mode: forwards;
+}
+#sliver11 {
+	display: none;
+}
+@keyframes sliver1 {
+	0% {
+		display: block;
+	}
+	33% {
+		transform: translate(-20% 20%);
+	}
+}
+@keyframes sliver5 {
+	33% {
+		display: block;
+	}
+}
+@keyframes sliver10 {
+	33% {
+		display: block;
+	}
+}
+@keyframes sliver2 {
+	33% {
+		display: block;
+	}
+}
+@keyframes sliver3 {
+	33% {
+		display: block;
+	}
+}
+@keyframes sliver4 {
+	33% {
+		display: block;
+	}
+}
+@keyframes sliver6 {
+	33% {
+		display: block;
+	}
+}
+@keyframes sliver7 {
+	33% {
+		display: block;
+	}
+}
+@keyframes sliver8 {
+	33% {
+		display: block;
+	}
+}
+@keyframes sliver9 {
+	33% {
+		display: block;
+	}
+}
+@keyframes sliver10 {
+	33% {
+		display: block;
+	}
+}
+
+
+/*Анимация кусков камней*/
+#splinters1 {
+	display: none;
+	animation-name: sliver1;
+	animation-duration: 6s;
+	animation-fill-mode: forwards;
+}
+#splinters2 {
+	display: none;
+	animation-name: sliver10;
+	animation-duration: 6s;
+	animation-fill-mode: forwards;
+}
+#splinters3 {
+	display: none;
+	animation-name: sliver10;
+	animation-duration: 6s;
+	animation-fill-mode: forwards;
+}
+#splinters4 {
+	display: none;
+	animation-name: sliver10;
+	animation-duration: 6s;
+	animation-fill-mode: forwards;
+}
+#splinters5 {
+	display: none;
+	animation-name: sliver5;
+	animation-duration: 6s;
+	animation-fill-mode: forwards;
+}
+#splinters6 {
+	display: none;
+	animation-name: sliver10;
+	animation-duration: 6s;
+	animation-fill-mode: forwards;
+}
+#splinters7 {
+	display: none;
+	animation-name: sliver10;
+	animation-duration: 6s;
+	animation-fill-mode: forwards;
+}
+#splinters8 {
+	display: none;
+	animation-name: sliver10;
+	animation-duration: 6s;
+	animation-fill-mode: forwards;
+}
+#splinters9 {
+	display: none;
+	animation-name: sliver10;
+	animation-duration: 6s;
+	animation-fill-mode: forwards;
+}
+#splinters10 {
+	display: none;
+	animation-name: sliver10;
+	animation-duration: 6s;
+	animation-fill-mode: forwards;
+}
+#splinters11 {
+	display: none;
+}
+@keyframes sliver1 {
+	0% {
+		display: block;
+	}
+	33% {
+		transform: translate(-20% 20%);
+	}
+}
+@keyframes sliver2 {
+	33% {
+		display: block;
+	}
+}
+@keyframes sliver3 {
+	33% {
+		display: block;
+	}
+}
+@keyframes sliver4 {
+	33% {
+		display: block;
+	}
+}
+@keyframes sliver5 {
+	33% {
+		display: block;
+	}
+}
+@keyframes sliver6 {
+	33% {
+		display: block;
+	}
+}
+@keyframes sliver7 {
+	33% {
+		display: block;
+	}
+}
+@keyframes sliver8 {
+	33% {
+		display: block;
+	}
+}
+@keyframes sliver9 {
+	33% {
+		display: block;
+	}
+}
+@keyframes sliver10 {
+	33% {
+		display: block;
+	}
+}
+@keyframes sliver11 {
+	33% {
+		display: block;
 	}
 }
 

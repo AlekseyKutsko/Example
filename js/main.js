@@ -229,9 +229,19 @@
         'axe_4': ['right-arm_x5F_ex', 'left-arm_3_', 'first-left-arm_3_', 'first-right-arm_x5F_ex4'],
         'axe_5': ['right-arm_x5F_ex', 'left-arm_3_', 'first-left-arm_3_', 'first-right-arm_x5F_ex5_1_'],
         'axe_6': ['right-arm_x5F_ex', 'left-arm_3_', 'first-left-arm_3_', 'first-right-arm_x5F_ex6'],
-
         'saw_1': ['right-arm_x5F_saw', 'left-arm_x5F_saw', 'first-right-arm_x5F_saw', 'first-left-arm_2_', 'chainsaw'],
         'saw_2': ['right-arm_x5F_saw2', 'left-arm_x5F_saw2', 'first-right-arm_x5F_saw2', 'first-left-arm_7_', 'saw2'],
+        'sliver_1': ['sliver1'],
+        'sliver_2': ['sliver2'],
+        'sliver_3': ['sliver3'],
+        'sliver_4': ['sliver4'],
+        'sliver_5': ['sliver5'],
+        'sliver_6': ['sliver6'],
+        'sliver_7': ['sliver7'],
+        'sliver_8': ['sliver8'],
+        'sliver_9': ['sliver9'],
+        'sliver_10': ['sliver10'],
+        'sliver_11': ['sliver11'],
 
         'pick_1': ['right-armpick_1_', 'left-arm_2_', 'first-left-arm_4_', 'first-right-arm_4_'],
         'pick_2': ['right-armpick_1_', 'left-arm_2_', 'first-left-arm_4_', 'first-right-arm_x5F_pick2'],
@@ -239,9 +249,19 @@
         'pick_4': ['right-armpick_1_', 'left-arm_2_', 'first-left-arm_4_', 'first-right-arm_x5F_pick4_1_'],
         'pick_5': ['right-armpick_1_', 'left-arm_2_', 'first-left-arm_4_', 'first-right-arm_x5F_pick5_1_'],
         'pick_6': ['right-armpick_1_', 'left-arm_2_', 'first-left-arm_4_', 'first-right-arm_x5F_pick6'],
-
         'perf_1': ['right-arm_x5F_perf', 'left-arm_x5F_perf', 'first-right-arm_x5F_perf', 'first-left-arm_5_', 'perf'],
         'perf_2': ['right-arm_x5F_perf2', 'left-arm_x5F_perf2', 'first-right-arm_x5F_perf2', 'first-left-arm_6_', 'perf2'],
+        'splinters_1': ['splinters1'],
+        'splinters_2': ['splinters2'],
+        'splinters_3': ['splinters3'],
+        'splinters_4': ['splinters4'],
+        'splinters_5': ['splinters5'],
+        'splinters_6': ['splinters6'],
+        'splinters_7': ['splinters7'],
+        'splinters_8': ['splinters8'],
+        'splinters_9': ['splinters9'],
+        'splinters_10': ['splinters10'],
+        'splinters_11': ['splinters11'],
 
         'bucket_1': ['right-arm_x5F_bucket_1_', 'left-arm_4_', 'first-right-arm_x5F_bucket_1_', 'first-left-arm_8_', 'bucket_x5F_1_2_', 'bucket1_1_'],
         'bucket_2': ['right-arm_x5F_bucket_1_', 'left-arm_4_', 'first-right-arm_x5F_bucket2_2_', 'first-left-arm_8_', 'bucket_x5F_2_1_', 'bucket2_1_'],
@@ -249,16 +269,15 @@
         'bucket_4': ['right-arm_x5F_bucket_1_', 'left-arm_4_', 'first-right-arm_x5F_bucket4', 'first-left-arm_8_', 'bucket_x5F_4', 'bucket3_2_'],
         'bucket_5': ['right-arm_x5F_bucket_1_', 'left-arm_4_', 'first-right-arm_x5F_bucket5_1_', 'first-left-arm_8_', 'bucket_x5F_5_1_', 'bucket3_4_'],
         'bucket_6': ['right-arm_x5F_bucket_1_', 'left-arm_4_', 'first-right-arm_x5F_bucket6', 'first-left-arm_8_', 'bucket_x5F_6', 'bucket6'],
-
         'pump_1': ['right-arm_x5F_pump', 'left-arm_x5F_pump', 'first-right-arm_x5F_pump', 'first-left-arm_1_', 'handle'],
         'pump_2': ['right-arm_x5F_pump2', 'left-arm_x5F_pump', 'first-right-arm_x5F_pump2', 'first-left-arm_1_', 'handle2'],
 
-        'shovel_1': ['right-arm_x5F_shovel', 'left-arm_5_', 'first-right-arm_x5F_shovel1', 'first-left-arm_8_', 'bucket_x5F_1_2_', 'bucket1_1_'],
-        'shovel_2': ['right-arm_x5F_shovel', 'left-arm_5_', 'first-right-arm_x5F_shovel2_2_', 'first-left-arm_8_', 'bucket_x5F_2_1_', 'bucket2_1_'],
-        'shovel_3': ['right-arm_x5F_shovel', 'left-arm_5_', 'first-right-arm_x5F_shovel3_2_', 'first-left-arm_8_', 'bucket_x5F_3_1_', 'bucket3_1_'],
-        'shovel_4': ['right-arm_x5F_shovel', 'left-arm_5_', 'first-right-arm_x5F_shovel4_1_', 'first-left-arm_8_', 'bucket_x5F_4', 'bucket3_2_'],
-        'shovel_5': ['right-arm_x5F_shovel', 'left-arm_5_', 'first-right-arm_x5F_shovel5_1_', 'first-left-arm_8_', 'bucket_x5F_5', 'bucket3_3_'],
-        'shovel_6': ['right-arm_x5F_shovel', 'left-arm_5_', 'first-right-arm_x5F_shovel6', 'first-left-arm_8_', 'bucket_x5F_5', 'bucket3_3_']
+        'shovel_1': ['right-arm_x5F_shovel', 'left-arm_5_', 'first-right-arm_x5F_shovel1', 'first-left-arm_11_', 'pile1'],
+        'shovel_2': ['right-arm_x5F_shovel', 'left-arm_5_', 'first-right-arm_x5F_shovel2_2_', 'first-left-arm_11_', 'pile2'],
+        'shovel_3': ['right-arm_x5F_shovel', 'left-arm_5_', 'first-right-arm_x5F_shovel3_2_', 'first-left-arm_11_', 'pile3'],
+        'shovel_4': ['right-arm_x5F_shovel', 'left-arm_5_', 'first-right-arm_x5F_shovel4_1_', 'first-left-arm_11_', 'pile4'],
+        'shovel_5': ['right-arm_x5F_shovel', 'left-arm_5_', 'first-right-arm_x5F_shovel5_1_', 'first-left-arm_11_', 'pile5'],
+        'shovel_6': ['right-arm_x5F_shovel', 'left-arm_5_', 'first-right-arm_x5F_shovel6', 'first-left-arm_11_', 'pile6']
     };
 
     var gameModel = {
@@ -574,7 +593,7 @@
     }
 
     function getOptionsAnimation(arm) {
-        var _result, _rightArm, _leftArm, _firstRightArm, _firstLeftArm, _handleArm, _saw, _perf, _bucketWithHandle, _bucket, _pile;
+        var _result, _rightArm, _leftArm, _firstRightArm, _firstLeftArm, _handleArm, _saw, _perf, _bucketWithHandle, _bucket, _pile,_sliver1, _sliver2, _sliver3, _sliver4, _sliver5, _sliver6, _sliver7, _sliver8, _sliver9, _sliver10, _sliver11, _splinters1, _splinters2, _splinters3, _splinters4, _splinters5, _splinters6, _splinters7, _splinters8, _splinters9, _splinters10, _splinters11;
         switch (gameModel.activeLocation){
             case 'forest' : {
                 if(arm.indexOf('axe') !== -1){
@@ -613,6 +632,17 @@
                     _leftArm = {DOM: document.getElementById('left-arm_3_'), animationClass: 'left_armex'};
                     _rightArm = {DOM: document.getElementById('right-arm_x5F_ex'), animationClass: 'right_armex'};
                     _firstLeftArm = {DOM: document.getElementById('first-left-arm_3_'), animationClass: 'first_left_armex'};
+                    _sliver1 = {DOM: document.getElementById('sliver1'), animationClass: 'sliver1'};
+                    _sliver2 = {DOM: document.getElementById('sliver2'), animationClass: 'sliver2'};
+                    _sliver3 = {DOM: document.getElementById('sliver3'), animationClass: 'sliver3'};
+                    _sliver4 = {DOM: document.getElementById('sliver4'), animationClass: 'sliver4'};
+                    _sliver5 = {DOM: document.getElementById('sliver5'), animationClass: 'sliver5'};
+                    _sliver6 = {DOM: document.getElementById('sliver6'), animationClass: 'sliver6'};
+                    _sliver7 = {DOM: document.getElementById('sliver7'), animationClass: 'sliver7'};
+                    _sliver8 = {DOM: document.getElementById('sliver8'), animationClass: 'sliver8'};
+                    _sliver9 = {DOM: document.getElementById('sliver9'), animationClass: 'sliver9'};
+                    _sliver10 = {DOM: document.getElementById('sliver10'), animationClass: 'sliver10'};
+                    _sliver11 = {DOM: document.getElementById('sliver11'), animationClass: 'sliver11'};
 
                     _result = {
                         pupils: document.getElementById('pupils_1_'),
@@ -622,6 +652,17 @@
                         first_right_arm: _firstRightArm,
                         left_arm: _leftArm,
                         first_left_arm: _firstLeftArm,
+                        sliver1: _sliver1,
+                        sliver2: _sliver2,
+                        sliver3: _sliver3,
+                        sliver4: _sliver4,
+                        sliver5: _sliver5,
+                        sliver6: _sliver6,
+                        sliver7: _sliver7,
+                        sliver8: _sliver8,
+                        sliver9: _sliver9,
+                        sliver10: _sliver10,
+                        sliver11: _sliver11,
                         delay: 2000
                     };
 
@@ -697,6 +738,17 @@
                     _leftArm = {DOM: document.getElementById('left-arm_2_'), animationClass: 'left_armex'};
                     _rightArm = {DOM: document.getElementById('right-armpick_1_'), animationClass: 'right_armex'};
                     _firstLeftArm = {DOM: document.getElementById('first-left-arm_4_'), animationClass: 'first_left_armex'};
+                    _splinters1 = {DOM: document.getElementById('splinters1'), animationClass: 'splinters1'};
+                    _splinters2 = {DOM: document.getElementById('splinters2'), animationClass: 'splinters2'};
+                    _splinters3 = {DOM: document.getElementById('splinters3'), animationClass: 'splinters3'};
+                    _splinters4 = {DOM: document.getElementById('splinters4'), animationClass: 'splinters4'};
+                    _splinters5 = {DOM: document.getElementById('splinters5'), animationClass: 'splinters5'};
+                    _splinters6 = {DOM: document.getElementById('splinters6'), animationClass: 'splinters6'};
+                    _splinters7 = {DOM: document.getElementById('splinters7'), animationClass: 'splinters7'};
+                    _splinters8 = {DOM: document.getElementById('splinters8'), animationClass: 'splinters8'};
+                    _splinters9 = {DOM: document.getElementById('splinters9'), animationClass: 'splinters9'};
+                    _splinters10 = {DOM: document.getElementById('splinters10'), animationClass: 'splinters10'};
+                    _splinters11 = {DOM: document.getElementById('splinters11'), animationClass: 'splinters11'};
 
                     _result = {
                         pupils: document.getElementById('pupils_3_'),
@@ -706,6 +758,17 @@
                         first_right_arm: _firstRightArm,
                         left_arm: _leftArm,
                         first_left_arm: _firstLeftArm,
+                        splinters1: _splinters1,
+                        splinters2: _splinters2,
+                        splinters3: _splinters3,
+                        splinters4: _splinters4,
+                        splinters5: _splinters5,
+                        splinters6: _splinters6,
+                        splinters7: _splinters7,
+                        splinters8: _splinters8,
+                        splinters9: _splinters9,
+                        splinters10: _splinters10,
+                        splinters11: _splinters11,
                         delay: 2000
                     };
                 } else if(gameModel.char.armCliffs.indexOf('perf') !== -1){
